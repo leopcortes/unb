@@ -1,0 +1,5 @@
+n = int(input())
+habilidades = list(map(int, input().split()))
+habilidades.sort(reverse=True)
+diferenca_maxima = sum(habilidades[:11]) - sum(habilidades[11:22])
+print(diferenca_maxima)

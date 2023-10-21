@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: ease 0.3s all;
+}
+
+/* ==================== Header ==================== */
+
+header {
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    background-color: #eeeeee;
+}
+
+nav > ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 5%
+}
+
+nav a {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #0768C8;
+}
+
+.logo {
+    display: flex;
+    margin: 0 1rem;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    color: #0768C8;
+}
+
+/* ==================== Seções ==================== */
+
+section {
+    margin: 5rem 5rem;
+}
+
+section > p {
+    padding: 0.13rem 0.75rem;
+    border-left: 4px solid #008940;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #133E79;
+}
+
+/* ==================== Departamentos ==================== */
+
+.departamentos {
+    margin: 1rem 4rem;
+}
+
+.departamentos > li {
+    margin: 0.2rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+    color: #061734;
+}
+
+/* ==================== Localizações ==================== */
+
+.area-cards-localizacoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px 5%;
+    margin: 2rem 0;
+}
+
+.area-cards-localizacoes div {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 250px;
+    border-radius: 1.1rem;
+    background-color: #eeeeee;
+}
+
+.area-cards-localizacoes img {
+    width: 100%;
+    height: 200px;
+    border-radius: 1.1rem 1.1rem 0 0;
+}
+
+.area-cards-localizacoes p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #061734;
+}
+
+/* ==================== Atleticas ==================== */
+
+table {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.alternada {
+    background-color: aliceblue;
+}
+
+table, td, th {
+    border: 1px solid #c6c6c6;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    color: #061734;
+}
+
+table th {
+    padding: 0.6rem;
+    font-size: 1.3rem;
+    color: #133E79;
+}
+
+.link-atletica {
+    text-align: right;
+}
+
+table a {
+    text-decoration: none;
+    color: #0e3577;
+}
+
+/* ==================== Footer ==================== */
+
+footer {
+    display: flex;
+    padding: 0.5rem 0;
+    background-color: #eeeeee;
+}
+
+footer > ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5%;
+    list-style: none;
+}
+
+footer a {
+    font-size: 3.5rem;
+    color: #0768C8;
+}
+
+/* ==================== Responsividade ==================== */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    footer > ul {
+        gap: 15%;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 12px;
+    }
+
+    nav > ul {
+        gap: 2%
+    }
+
+    .logo {
+        margin: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 10px;
+    }
+
+    .departamentos {
+        margin: 1rem 2rem;
+    }
+}
+
+@media (max-width: 430px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 370px) {
+    html {
+        font-size: 10px;
+    }
+
+    nav > ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin-top: 1rem;
+    }
+
+    #atleticas {
+        margin: 2rem 2rem;
+    }
+    
+    #atleticas > p {
+        margin: 2rem 3rem;
+    }
+}
+
+@media (max-width: 281px) {
+    html {
+        font-size: 8px;
+    }
+
+    .area-cards-localizacoes div {
+        width: 350px;
+        height: 200px;
+    }
+}

@@ -1,0 +1,11 @@
+TODO:
+[x] FUNÇÃO ACHAR Nº PRIMOS (simulado-q10)
+[x] DECIMAL PARA ROMANO (decimal_romano)
+[x] SAQUE DE NOTAS R$ (lista-q1)
+[x] DISTANCIA EUCLIDIANA (lista-q4)
+[x] simulado-q5
+- MANIPULAÇÃO DE BITS
+   [x] ACHAR MSB (msb)
+   [x] DECIMAL PARA HEXADECIMAL
+   [x] BIT ALEATORIO (gerador_aleatorio_bits)
+   [x] MASCARAS (manipulacao_bits)

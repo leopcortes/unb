@@ -1,0 +1,11 @@
+Trabalho 1 - OAC (UnB 2023.2)
+Leonardo Pereira Côrtes (200030582)
+
+Tradução do algoritmo de cifgragem de dados IDEA da linguagem C para linguagem Assembly do RISC-V, utilizando a plataforma RARS1_6.
+
+O código foi dividido em 3 funções: main, idea_round e mult.
+- Na main os arrays de entrada, saída e das chaves são carregados para registradores, logo após, a função idea_round é chamada e por fim os valores são impressos no console utilizando uma sub-rotina loop.
+- Na função idea_round cada word é carregada para um registrador e uma máscara (0xFFFF) para pegar os 16 bits menos significativos. Em seguida são realizadas as operações de cifragem como xors, multiplicações, shifts (operações descritas nos comentários do código), e chamada da função mult, por fim os valores finais são guardados em outros registradores e retorna para o local onde a função foi chamada na main.
+- Na função mult é realizado o mesmo processo do código em C utilizando sub-rotinas para operações condicionais, por fim o resultado é passado pelo mascaramento 0xFFFF e retorna para o local onde a função foi chamada.
+
+Os testes realizados para verificação do código foram feitos inserindo os valores de entrada/saída/chaves na parte de dados do código, após a compilar e rodar os 4 valores finais são impressos mas também podem ser vistos nos registradores s0-3.
