@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <math.h>
 
-// Memoria de 16KiB ou 4Ki Words
+// Memoria de 8KWords ou 32KBytes
 #define MEM_SIZE 4096
 int32_t mem[MEM_SIZE];
 
