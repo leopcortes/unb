@@ -1,56 +1,80 @@
-class Deque:
-	def __init__(self):
-		self.items = []
-	
-	def isEmpty(self):
-		return self.items == []
-	
-	def addFront(self, item):
-		self.items.append(item)
-	
-	def addRear(self, item):
-		self.items.insert(0,item)
-	
-	def removeFront(self):
-		return self.items.pop()
-	
-	def removeRear(self):
-		return self.items.pop(0)
-	
-	def size(self):
-		return len(self.items)
+class Stack():
+    def __init__(self):
+        self.items = []
 
-while True:
-    N = int(input())
-    if N == 0:
-        break
+    def push(self,item):
+        self.items.append(item)
 
-    while True:
-        train_order = list(map(int, input().split()))
-        train_order = ''.join(map(str, train_order))
-        
-        if train_order[0] == "0":
-            print()
-            break
-        
-        deque1 = Deque()
-        deque2 = Deque()
-        is_palindrome = True
+    def pop(self):
+        self.items.pop()
 
-        for wagon in train_order:
-            deque1.addRear(wagon)
-            deque2.addFront(wagon)
+    def size(self):
+        return len(self.items)
+    
+    def isEmpty(self):
+        return self.size() == 0
+    
+    def peek(self):
+        return self.items[-1]
+    
+class Queue():
+    def __init__(self):
+        self.items = []
 
-        while deque1.size() > 1:
-            front_wagon = deque1.removeFront()
-            rear_wagon = deque2.removeRear()
+    def enqueue(self,item):
+        self.items.insert(0, item)
 
-            if front_wagon != rear_wagon:
-                is_palindrome = False
+    def dequeue(self):
+        self.items.pop()
+
+    def size(self):
+        return len(self.items)
+    
+    def isEmpty(self):
+        return self.size() == 0
+    
+    def front(self):
+        return self.items[self.size()-1]
+    
+n = int(input())
+while n != 0:
+    # le a permutacao desejada
+    permutacao = [int(x) for x in input().split()]
+
+    while permutacao != [0]:
+        fila, pilha = Queue(), Stack()
+        ans = []
+
+        # poe os vagoes na fila
+        for vagao in range(1, n+1):
+            fila.enqueue(vagao)
+
+        for pi in permutacao:
+            # ver se o vagao nao esta na pilha
+            if not pilha.isEmpty() and pilha.peek() == pi:
+                ans.append(pilha.peek())
+                pilha.pop()
+                continue
+
+            # colocar os vagoes na pilha ate achar o vagao desejado
+            while not fila.isEmpty() and fila.front() != pi:
+                pilha.push(fila.front())
+                fila.dequeue()
+
+            # achou o vagao
+            if not fila.isEmpty():
+                ans.append(fila.front())
+                fila.dequeue()
+
+            # n e possivel fazer a permutacao
+            else:
                 break
 
-        if is_palindrome:
-            print("Yes")
-        else:
-            print("No")
-            
+        if ans == permutacao: print("Yes")
+        else: print("No")
+
+        permutacao = [int(x) for x in input().split()]
+
+    print()
+
+    n = int(input())
