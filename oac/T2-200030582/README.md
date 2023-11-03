@@ -1,5 +1,5 @@
 # Trabalho 2 OAC
-Prof: Ricardo Pezzuol Jacobi
+Prof: Ricardo Pezzuol Jacobi<br>
 Aluno: Leonardo Pereira Côrtes - 200030582
 
 ## Implementação
@@ -33,7 +33,7 @@ run();
 ```
 
 ### Testes e Resultados
-Foram gerados os arquivos em binários das instruções e dos dados presentes no arquivo ```testador.asm``` fornecido, e a partir deles foram realizados os 22 testes com sucesso. Os testes são operações simples para verificar a funcionalidade de cada instrução. O resultado foi de acordo com o esperado, ou seja, o mesmo resultado rodando o arquivo testador na plataforma RARS.
+Foram gerados os arquivos em binários das instruções e dos dados presentes no arquivo ```testador.asm``` fornecido, e a partir deles foram realizados os 22 testes com sucesso. Os testes são operações simples para verificar a funcionalidade de cada instrução. O resultado foi de acordo com o esperado, ou seja, o mesmo resultado rodando o arquivo testador na plataforma RARS.<br>
 Execução (comandos para realizar podem ser encontrados no final do relatório na seção "Uso"):
 ```
 Teste1 OK
