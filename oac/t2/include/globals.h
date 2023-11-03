@@ -1,9 +1,5 @@
-//
 //  globals.h
 //  RV32I
-//
-//
-//
 
 #ifndef __GLOBALS_H__
 #define __GLOBALS_H__
@@ -58,10 +54,7 @@ enum INSTRUCTIONS {
     I_ori, I_ecall, I_xori, I_nop
 };
 
-
-//
 // identificacao dos registradores do banco do RV32I
-//
 enum REGISTERS {
     ZERO=0, RA=1,	SP=2,	GP=3,
     TP=4,	T0=5,	T1=6,	T2=7,
@@ -75,22 +68,16 @@ enum REGISTERS {
 
 extern string reg_str[];
 
-//
 //	Memory
-//
 enum { MEM_SIZE = 4096 };
 enum { DATA_SEGMENT_START = 0x2000 };
 
-//
 // Identificacao de tipo de dado
-//
 enum DATA_TYPE {
      BYTE=4, INTEGER=1
 };
 
-//
 // Word size: 2ˆ(size) em bytes
-//
 enum WORD_SIZE_E {
     BYTE_SIZE = 0, HALF_SIZE = 1, WORD_SIZE = 2, DOUBLE_SIZE = 3
 };
@@ -101,26 +88,26 @@ extern
 int32_t breg[32];
 
 extern
-uint32_t pc,						// contador de programa
-         ri,						// registrador de intrucao
-         sp,						// stack pointe4r
-         gp;						// global pointer
+uint32_t pc,			// contador de programa
+         ri,			// registrador de intrucao
+         sp,			// stack pointe4r
+         gp;			// global pointer
 
 extern
-int32_t		imm12_i,				// constante 12 bits
-            imm12_s,				// constante 12 bits
-            imm13,					// constante 13 bits
-            imm20_u,				// constante 20 bis mais significativos
-            imm21;					// constante 21 bits
+int32_t		imm12_i,	// constante 12 bits
+            imm12_s,	// constante 12 bits
+            imm13,		// constante 13 bits
+            imm20_u,	// constante 20 bis mais significativos
+            imm21;		// constante 21 bits
 
 extern
-uint32_t	opcode,					// codigo da operacao
-            rs1,					// indice registrador rs
-            rs2,					// indice registrador rt
-            rd,						// indice registrador rd
-            shamt,					// deslocamento
-            funct3,					// campos auxiliares
-            funct7;					// constante instrucao tipo J
+uint32_t	opcode,		// codigo da operacao
+            rs1,		// indice registrador rs
+            rs2,		// indice registrador rt
+            rd,			// indice registrador rd
+            shamt,		// deslocamento
+            funct3,		// campos auxiliares
+            funct7;		// constante instrucao tipo J
 
 
 struct instruction_context_st {
@@ -135,10 +122,7 @@ extern instruction_context_st instr_info;
 
 extern string instr_str[39];
 
-//
 // Funcoes definidas em riscv.cpp
-//
-
 void init();
 void fetch (instruction_context_st& ic);
 void decode (instruction_context_st& ic);

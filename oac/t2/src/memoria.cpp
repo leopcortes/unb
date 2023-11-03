@@ -46,22 +46,6 @@ int32_t lh(uint32_t address, int32_t kte) {
 	return (word & 0xFFFF);
 }
 
-//int32_t lhu(uint32_t address, int32_t kte) {
-//	uint32_t target_addr = address + kte;
-//
-//	check_address_range(target_addr);
-//
-//	if ((target_addr % 2) != 0) {
-//		cout << "Erro: endereco de meia palavra desalinhado!";
-//		return -1;
-//	}
-//
-//	auto word = mem[target_addr];
-//	word = (word >> 8 * (target_addr & 2));
-//
-//	return (word & 0xFFFF);
-//}
-
 int32_t lw(uint32_t address, int32_t kte) {
 	auto target_addr = address + kte;
 
@@ -70,13 +54,10 @@ int32_t lw(uint32_t address, int32_t kte) {
 	return mem[target_addr >> 2];
 }
 
-
-
 void sb(uint32_t address, int32_t kte, int8_t dado) {
 	auto target_addr = address + kte;
 
 	check_address_range(target_addr);
-
 
 	auto* pb = (uint8_t*)&mem[target_addr >> 2];
 	auto bi = (target_addr % 4);
@@ -85,26 +66,10 @@ void sb(uint32_t address, int32_t kte, int8_t dado) {
 	*pb = (uint8_t)dado;
 }
 
-void sh(uint32_t address, int32_t kte, int8_t dado) {
-	auto target_addr = address + kte;
-
-	check_address_range(target_addr);
-
-	if ((target_addr % 2) != 0)
-		cout << "Erro: endereco de meia palavra desalinhado!" << endl;
-
-	uint16_t *ph = (uint16_t *)&mem[target_addr>>2];
-
-	if (target_addr) ph++;
-
-	*ph = (uint16_t)dado;
-}
-
 void sw(uint32_t address, int32_t kte, int32_t dado){
 	auto target_address = address + kte;
 
 	check_address_range(target_address);
 
 	mem[target_address >> 2] = dado;
-
 }

@@ -5,7 +5,7 @@ EXT=cpp
 CFLAGS = -g -Wall -I./include
 
 SRC = ./src/memoria.cpp ./src/riscv.cpp
-INCLUDE = ./include/globals.h ./include/memoria.h ./include/riscv.h
+INCLUDE = ./include/globals.h ./include/memoria.h
 OBJ = $(SRC:./src/%.cpp=./src/obj/%.o)
 
 $(NOME_SAIDA): $(OBJ)
