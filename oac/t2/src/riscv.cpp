@@ -52,7 +52,7 @@ void fetch() {
 
 int step_counter = 1;
 void step() {
-    //printf("STEP %d \n", step_counter);
+    //cout << "STEP " << step_counter << endl;
     fetch();
     decode(ic);
     //debug_decode(ic);
@@ -354,14 +354,14 @@ void execute(instruction_context_st& ic) {
                     }
                 } while (a != 0x00);
             } else if (breg[A7] == 10) {
-                printf("Encerrando programa.\n");
+                cout << "Encerrando programa." << endl;
                 exit(0);
             }
             break;
         case I_nop:
             break;
         default:
-            printf("Instrucao nao implementada %d", ic.ins_code);
+            cout << "Instrucao nao implementada " << ic.ins_code;
             break;
     }
 }
@@ -383,7 +383,7 @@ void debug_decode(instruction_context_st& ic) {
 }
 
 void dump_reg(char format, bool include_zero = true) {
-    printf("\n");
+    cout << endl;
     auto base = (format == 'h') ? hex : dec;
     for (int i = 0; i < 32; i++) {
         if (breg[i] == 0 && !include_zero)
@@ -392,7 +392,7 @@ void dump_reg(char format, bool include_zero = true) {
         cout << "BREG[" << dec<< i << "] = " << base <<breg[i] << endl;
     }
 
-    printf("PC pra proxima instrucao: ");
+    cout << "PC pra proxima instrucao: ";
     
     cout << "pc = " << base << ic.pc << endl;
     cout << "hi = " << base << hi << endl;
@@ -400,15 +400,15 @@ void dump_reg(char format, bool include_zero = true) {
 }
 
 void dump_mem(int start, int end, char format){
-    printf("\n");
+    cout << endl;
     if (format == 'h') {
         for (auto i = start; i <= end; i += 4) {
-            printf("%x \t%x\n", i, lw(i, 0));
+            cout << i << '\t' << lw(i, 0) << endl;
         }
 
     } else {
         for (auto i = start; i < end; i += 4) {
-            printf("%x \t%d\n", i, lw(i, 0));
+            cout << i << '\t' << lw(i, 0) << endl;
         }
     }
 }
@@ -420,7 +420,7 @@ int load_mem(const char* fn, int start) {
 
     file_ptr = fopen(fn, "rb");
     if (!file_ptr) {
-        printf("Arquivo nao encontrado!");
+        cout << "Arquivo nao encontrado!" << endl;
         return -1;
     } else {
         while (!feof(file_ptr)) {
