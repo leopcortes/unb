@@ -9,8 +9,8 @@ using namespace std;
 int32_t breg[32];
 uint32_t pc = 0x00000000;	// contador de programa
 uint32_t ri = 0x00000000;	// registrador de intrucao
-uint32_t hi = 0x00000000;
-uint32_t lo = 0x00000000;
+uint32_t sp = 0x00003ffc;   // stack pointer
+uint32_t gp = 0x00001800;   // global pointer
 
 int32_t		imm12_i,	    // constante 12 bits
             imm12_s,	    // constante 12 bits
@@ -29,8 +29,6 @@ uint32_t	opcode,		    // codigo da operacao
 instruction_context_st ic;
 
 void init() {
-    breg[SP] = 0x00003ffc;                 // stack pointer
-    breg[GP] = 0x00001800;                 // global pointer
     load_mem("./bin/code.bin", 0);         // codigo
     load_mem("./bin/data.bin", 0x2000);    // dados
 }
@@ -44,7 +42,7 @@ void pc_branch(int32_t offset, instruction_context_st& ic) {
 }
 
 void fetch() {
-    ri = mem[pc >> 2];
+    ri = lw(pc, 0);
     ic.ri = ri;
     ic.pc = pc;
     pc += 4;
@@ -52,33 +50,28 @@ void fetch() {
 
 int step_counter = 1;
 void step() {
-    //cout << "STEP " << step_counter << endl;
     fetch();
     decode(ic);
-    //debug_decode(ic);
     execute(ic);
-    if (ic.pc + 4 == pc) {
+    if(ic.pc + 4 == pc) {
         ic.pc = pc;
     } else {
         pc = ic.pc;
     }
-
-    // dump_reg('h', false);
-    //dump_mem(0x2000, 0x2014, 'h');
     step_counter += 1;
 }
 
 void run() {
-    while (ic.pc < 0x2000) {
+    while(ic.pc < 0x2000) {
         step();
     }
 }
 
-void decode (instruction_context_st& ic) {
+void decode(instruction_context_st& ic) {
     int32_t tmp;
     opcode	= ri & 0x7F;
-    rs2		= (ri >> 20) & 0x1F;
     rs1		= (ri >> 15) & 0x1F;
+    rs2		= (ri >> 20) & 0x1F;
     rd		= (ri >> 7)  & 0x1F;
     shamt	= (ri >> 20) & 0x1F;
     funct3	= (ri >> 12) & 0x7;
@@ -87,27 +80,27 @@ void decode (instruction_context_st& ic) {
     tmp     = get_field(ri, 7, 0x1f);
     imm12_s = set_field(imm12_i, 0, 0x1f, tmp);
     imm13   = imm12_s;
-    imm13 = set_bit(imm13, 11, imm12_s&1);
-    imm13 = imm13 & ~1;
+    imm13   = set_bit(imm13, 11, imm12_s&1);
+    imm13   = imm13 & ~1;
     imm20_u = ri & (~0xFFF);
-    imm21 = (int32_t)ri >> 11;
-    tmp = get_field(ri, 12, 0xFF);
-    imm21 = set_field(imm21, 12, 0xFF, tmp);
-    tmp = get_bit(ri, 20);
-    imm21 = set_bit(imm21, 11, tmp);
-    tmp = get_field(ri, 21, 0x3FF);
-    imm21 = set_field(imm21, 1, 0x3FF, tmp);
-    imm21 = imm21 & ~1;
-    ic.ins_code = get_instr_code(opcode, funct3, funct7);
+    imm21   = (int32_t)ri >> 11;
+    tmp     = get_field(ri, 12, 0xFF);
+    imm21   = set_field(imm21, 12, 0xFF, tmp);
+    tmp     = get_bit(ri, 20);
+    imm21   = set_bit(imm21, 11, tmp);
+    tmp     = get_field(ri, 21, 0x3FF);
+    imm21   = set_field(imm21, 1, 0x3FF, tmp);
+    imm21   = imm21 & ~1;
+    ic.ins_code   = get_instr_code(opcode, funct3, funct7);
     ic.ins_format = get_i_format(opcode, funct3, funct7);
-    ic.rs1 = (REGISTERS)rs1;
-    ic.rs2 = (REGISTERS)rs2;
-    ic.rd = (REGISTERS)rd;
-    ic.shamt = shamt;
+    ic.rs1  = (REGISTERS)rs1;
+    ic.rs2  = (REGISTERS)rs2;
+    ic.rd   = (REGISTERS)rd;
+    ic.shamt   = shamt;
     ic.imm12_i = imm12_i;
     ic.imm12_s = imm12_s;
-    ic.imm13 = imm13;
-    ic.imm21 = imm21;
+    ic.imm13   = imm13;
+    ic.imm21   = imm21;
     ic.imm20_u = imm20_u;
 }
 
@@ -119,7 +112,7 @@ INSTRUCTIONS get_instr_code(uint32_t opcode, uint32_t func3, uint32_t func7) {
         case JALR: return I_jalr;
         case ECALL: return I_ecall;
         case ILType:
-            switch (func3) {
+            switch(func3) {
             case LB3: return I_lb;
             case LBU3: return I_lbu;
             case LH3: return I_lh;
@@ -127,15 +120,15 @@ INSTRUCTIONS get_instr_code(uint32_t opcode, uint32_t func3, uint32_t func7) {
             case LHU3: return I_lhu;
             }
         case StoreType:
-            switch (func3) {
+            switch(func3) {
                 case SB3: return I_sb;
                 case SH3: return I_sh; 
                 case SW3: return I_sw; 
             }
         case RegType:
-            switch (func3){
+            switch(func3){
                 case ADDSUB3:
-                    switch (func7) {
+                    switch(func7) {
                         case ADD7: return  I_add;
                         case SUB7: return I_sub;
                     }
@@ -146,13 +139,13 @@ INSTRUCTIONS get_instr_code(uint32_t opcode, uint32_t func3, uint32_t func7) {
                 case OR3: return I_or;
                 case AND3: return I_and;
                 case SR3:
-                    switch (func7) {
+                    switch(func7) {
                         case SRA7: return I_sra;
                         case SRL7: return I_srl;
                     }        
             }
         case ILAType:
-            switch (func3)
+            switch(func3)
             {
                 case ADDI3: return I_addi;
                 case ORI3: return I_ori;
@@ -162,13 +155,13 @@ INSTRUCTIONS get_instr_code(uint32_t opcode, uint32_t func3, uint32_t func7) {
                 case SLTIU3: return I_sltiu;
                 case SLLI3: return I_slli;
                 case SRI3:
-                    switch (func7) {
+                    switch(func7) {
                         case SRAI7: return I_srai;
                         case SRLI7: return I_srli;
                     }
             }
         case BType:
-            switch (func3)
+            switch(func3)
             {
                 case BEQ3: return I_beq;
                 case BNE3: return I_bne;
@@ -182,7 +175,7 @@ INSTRUCTIONS get_instr_code(uint32_t opcode, uint32_t func3, uint32_t func7) {
 }
 
 FORMATS get_i_format(uint32_t opcode, uint32_t func3, uint32_t func7) {
-    switch (opcode) {
+    switch(opcode) {
         case LUI: 
         case AUIPC: return UType;
         case JAL: 
@@ -225,7 +218,7 @@ int logSh3(int32_t x, int32_t n) {
 void execute(instruction_context_st& ic) {
     uint32_t t = 0;
     breg[0] = 0;
-    switch (ic.ins_code) {
+    switch(ic.ins_code) {
         case I_add:
             breg[ic.rd] = breg[ic.rs1] + breg[ic.rs2]; 
             break;
@@ -242,22 +235,22 @@ void execute(instruction_context_st& ic) {
             breg[ic.rd] = ic.pc + ic.imm20_u; 
             break;
         case I_beq:
-            if (breg[ic.rs1] == breg[ic.rs2]) pc_branch(ic.imm13, ic);
+            if(breg[ic.rs1] == breg[ic.rs2]) pc_branch(ic.imm13, ic);
             break;
         case I_bne:
-            if (breg[ic.rs1] != breg[ic.rs2]) pc_branch(ic.imm13, ic);
+            if(breg[ic.rs1] != breg[ic.rs2]) pc_branch(ic.imm13, ic);
             break;
         case I_blt:
-            if (breg[ic.rs1] < breg[ic.rs2]) pc_branch(ic.imm13, ic);
+            if(breg[ic.rs1] < breg[ic.rs2]) pc_branch(ic.imm13, ic);
             break;
         case I_bge:
-            if (breg[ic.rs1] >= breg[ic.rs2]) pc_branch(ic.imm13, ic);        
+            if(breg[ic.rs1] >= breg[ic.rs2]) pc_branch(ic.imm13, ic);        
             break;
         case I_bltu:
-            if (unsign(breg[ic.rs1]) < unsign(breg[ic.rs2])) pc_branch(ic.imm13, ic);
+            if(unsign(breg[ic.rs1]) < unsign(breg[ic.rs2])) pc_branch(ic.imm13, ic);
             break;
         case I_bgeu:
-            if (unsign(breg[ic.rs1]) >= unsign(breg[ic.rs2])) pc_branch(ic.imm13, ic);
+            if(unsign(breg[ic.rs1]) >= unsign(breg[ic.rs2])) pc_branch(ic.imm13, ic);
             break;
         case I_lb:
             breg[ic.rd] = lb(breg[ic.rs1], ic.imm12_i);
@@ -272,7 +265,7 @@ void execute(instruction_context_st& ic) {
             breg[ic.rd] = lbu(breg[ic.rs1], ic.imm12_i);
             break;
         case I_jal:
-            if (ic.rd == 0) {
+            if(ic.rd == 0) {
                 ic.rd = RA;
             }
             breg[ic.rd] = ic.pc + 4;
@@ -336,9 +329,9 @@ void execute(instruction_context_st& ic) {
             breg[ic.rd] = breg[ic.rs1] | breg[ic.rs2];
             break;
         case I_ecall:
-            if (breg[A7] == 1) {
+            if(breg[A7] == 1) {
                 cout << (int32_t)breg[A0];
-            } else if (breg[A7] == 4) {
+            } else if(breg[A7] == 4) {
                 int pos, offset;
                 char a;
                 pos = breg[A0] >> 2;
@@ -348,12 +341,12 @@ void execute(instruction_context_st& ic) {
                     a = (mem[pos] >> (offset * 8)) & 0xFF;
                     cout << dec << a;
                     offset++;
-                    if (offset >= 4) {
+                    if(offset >= 4) {
                         pos++;
                         offset = 0;
                     }
-                } while (a != 0x00);
-            } else if (breg[A7] == 10) {
+                } while(a != 0x00);
+            } else if(breg[A7] == 10) {
                 cout << "Encerrando programa." << endl;
                 exit(0);
             }
@@ -385,29 +378,25 @@ void debug_decode(instruction_context_st& ic) {
 void dump_reg(char format, bool include_zero = true) {
     cout << endl;
     auto base = (format == 'h') ? hex : dec;
-    for (int i = 0; i < 32; i++) {
-        if (breg[i] == 0 && !include_zero)
+    for(int i = 0; i < 32; i++) {
+        if(breg[i] == 0 && !include_zero)
             continue;
 
         cout << "BREG[" << dec<< i << "] = " << base <<breg[i] << endl;
     }
 
     cout << "PC pra proxima instrucao: ";
-    
     cout << "pc = " << base << ic.pc << endl;
-    cout << "hi = " << base << hi << endl;
-    cout << "lo = " << base << lo << endl;
 }
 
 void dump_mem(int start, int end, char format){
     cout << endl;
-    if (format == 'h') {
-        for (auto i = start; i <= end; i += 4) {
+    if(format == 'h') {
+        for(auto i = start; i <= end; i += 4) {
             cout << i << '\t' << lw(i, 0) << endl;
         }
-
     } else {
-        for (auto i = start; i < end; i += 4) {
+        for(auto i = start; i < end; i += 4) {
             cout << i << '\t' << lw(i, 0) << endl;
         }
     }
@@ -419,11 +408,11 @@ int load_mem(const char* fn, int start) {
     int size = 0;
 
     file_ptr = fopen(fn, "rb");
-    if (!file_ptr) {
+    if(!file_ptr) {
         cout << "Arquivo nao encontrado!" << endl;
         return -1;
     } else {
-        while (!feof(file_ptr)) {
+        while(!feof(file_ptr)) {
             fread(memory_ptr, 4, 1, file_ptr);
             memory_ptr++;
             size++;

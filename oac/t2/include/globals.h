@@ -1,5 +1,5 @@
-//  globals.h
-//  RV32I
+// globals.h
+// RV32I
 
 #ifndef __GLOBALS_H__
 #define __GLOBALS_H__
@@ -15,12 +15,12 @@ using namespace std;
 #define set_field(word, index, mask, value) (word & ~(mask << index)) | (value << index)
 
 enum OPCODES {
-    LUI = 0x37,		AUIPC = 0x17,		// atribui 20 msbits
-    ILType = 0x03,						// Load type
-    BType = 0x63,						// branch condicional
-    JAL = 0x6F,		JALR = 0x67,		// jumps
-    StoreType = 0x23,					// store
-    ILAType = 0x13,						// logico-aritmeticas com imediato
+    LUI = 0x37,		AUIPC = 0x17,   // atribui 20 msbits
+    ILType = 0x03,					// Load type
+    BType = 0x63,					// branch condicional
+    JAL = 0x6F,		JALR = 0x67,	// jumps
+    StoreType = 0x23,				// store
+    ILAType = 0x13,					// logico-aritmeticas com imediato
     RegType = 0x33,
     ECALL = 0x73
 };
@@ -88,16 +88,16 @@ extern
 int32_t breg[32];
 
 extern
-uint32_t pc,			// contador de programa
-         ri,			// registrador de intrucao
-         sp,			// stack pointe4r
-         gp;			// global pointer
+uint32_t    pc,			// contador de programa
+            ri,			// registrador de intrucao
+            sp,			// stack pointer
+            gp;			// global pointer
 
 extern
 int32_t		imm12_i,	// constante 12 bits
             imm12_s,	// constante 12 bits
             imm13,		// constante 13 bits
-            imm20_u,	// constante 20 bis mais significativos
+            imm20_u,	// constante 20 bits mais significativos
             imm21;		// constante 21 bits
 
 extern
@@ -108,8 +108,6 @@ uint32_t	opcode,		// codigo da operacao
             shamt,		// deslocamento
             funct3,		// campos auxiliares
             funct7;		// constante instrucao tipo J
-
-
 struct instruction_context_st {
     uint32_t ri, pc;
     INSTRUCTIONS ins_code;
@@ -124,8 +122,8 @@ extern string instr_str[39];
 
 // Funcoes definidas em riscv.cpp
 void init();
-void fetch (instruction_context_st& ic);
-void decode (instruction_context_st& ic);
+void fetch(instruction_context_st& ic);
+void decode(instruction_context_st& ic);
 void print_instr(instruction_context_st& ic);
 INSTRUCTIONS get_instr_code(uint32_t opcode, uint32_t func3, uint32_t func7);
 FORMATS get_i_format(uint32_t opcode, uint32_t func3, uint32_t func7);
@@ -134,7 +132,7 @@ void dump_breg();
 void dump_asm(int start, int end);
 void dump_mem(int start_byte, int end_byte, char format);
 int load_mem(const char *fn, int start);
-void execute (instruction_context_st& ic);
+void execute(instruction_context_st& ic);
 void step();
 void run();
 

@@ -5,8 +5,7 @@ using namespace std;
 int32_t mem[MEM_SIZE];
 
 void check_address_range(uint32_t address) {
-	// endereco em bytes, memoria em words
-	if ((address >> 2) > MEM_SIZE) {
+	if((address >> 2) > MEM_SIZE) { // endereco em bytes, memoria em words
 		cout << "Erro: Endereco fora dos limites da memoria - " << address;
 		exit(-1);
 	}
@@ -35,8 +34,7 @@ int32_t lh(uint32_t address, int32_t kte) {
 
 	check_address_range(target_addr);
 
-
-	if ((target_addr % 2) != 0) {
+	if((target_addr % 2) != 0) {
 		cout << "Erro: endereco de meia palavra desalinhado!" << endl;
 		return -1;
 	}
