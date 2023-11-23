@@ -13,7 +13,7 @@ architecture a of XREGS_tb is
             clk, wren           : in std_logic;
             rs1, rs2, rd        : in std_logic_vector(4 downto 0);
             data                : in std_logic_vector(WSIZE-1 downto 0);
-            ro1, ro2            : out std_logic_vector(WSIZE-1 downto 0);
+            ro1, ro2            : out std_logic_vector(WSIZE-1 downto 0) := (others => '0');
         );
     end component;
 
@@ -21,7 +21,9 @@ architecture a of XREGS_tb is
     signal clk, wren            : std_logic;
     signal rs1, rs2, rd         : std_logic_vector(4 downto 0);
     signal data                 : std_logic_vector(WSIZE-1 downto 0);
-    signal ro1, ro2             : std_logic_vector(WSIZE-1 downto 0);
+    signal ro1, ro2             : std_logic_vector(WSIZE-1 downto 0) := (others => '0');
+    
+    signal seq_val              : std_logic_vector(WSIZE-1 downto 0) := x"00000000";
 
 begin
     i_XREGS: XREGS generic map (WSIZE => WSIZE)
@@ -38,58 +40,54 @@ begin
 
     process is
     begin
-        for i in 0 to 31 loop
-            -- Escrever valores nos registradores
-            wren <= '1';
-            rs1 <= std_logic_vector(to_unsigned(i, 5));
-            rs2 <= (others => '0');
-            rd <= std_logic_vector(to_unsigned(i, 5));
-            data <= std_logic_vector(to_unsigned(i * 2, WSIZE));
-            wait for 1 ns;
-            wren <= '0'; -- Desativar a escrita
+        -- O loop realiza 31 iteracoes para possibilitar a verificacao dos 32 regs sem gerar um erro "out of range" por rs2 ser i+1, para ser um endereco diferente de rs1
+        for i in 0 to 30 loop 
+        	wren <= '0';
+        	rs1 <= std_logic_vector(to_unsigned(i, 5));
+        	rs2 <= std_logic_vector(to_unsigned(i+1, 5));
+        	clk <= '0';
+        	wait for 1 ns;
+
+        	wren <= '1';
+        	rd <= std_logic_vector(to_unsigned(i, 5));
+        	data <= seq_val;
+        	clk <= '1';
+        	wait for 1 ns;
             
-            wait for 1 ns; -- Aguardar um ciclo de clock para garantir a escrita
+            clk <= '0';
+        	wait for 1 ns;
             
-            -- Ler valores dos registradores
-            rs1 <= std_logic_vector(to_unsigned(i, 5));
-            rs2 <= (others => '0');
-            rd <= (others => '0');
-            wait for 1 ns;
+        	wren <= '1';
+        	rd <= std_logic_vector(to_unsigned(i+1, 5));
+        	data <= seq_val;
+        	clk <= '1';
+        	wait for 1 ns;
             
-            assert ro1 = std_logic_vector(to_unsigned(i * 2, WSIZE))
-                report "Valor lido em ro1 não corresponde ao valor escrito"
-                severity error;
+            clk <= '0';
+        	wait for 1 ns;
+			
+        	assert (ro1 = seq_val) report "Erro, valor inesperado em ro1." severity error;
+        	assert (ro2 = seq_val) report "Erro, valor inesperado em ro2." severity error;
             
-            assert ro2 = (others => '0')
-                report "Valor lido em ro2 deveria ser 0"
-                severity error;
+            seq_val <= std_logic_vector(unsigned(seq_val) + 1);
+
         end loop;
-    
-        -- Escrever um valor diferente de zero no registrador zero
+        
+        -- Escrita de um valor diferente de zero em regs[0] para verificar se ele nao e alterado
+        rs1 <= 5x"00";
+        clk <= '0';
+        wait for 1 ns;
+
         wren <= '1';
-        rs1 <= (others => '0');
-        rs2 <= (others => '0');
-        rd <= (others => '0');
-        data <= std_logic_vector(to_unsigned(999, WSIZE));
+        rd <= 5x"00";
+        data <= x"FACACAFE";
+        clk <= '1';
         wait for 1 ns;
-        wren <= '0'; -- Desativar a escrita
+
+        assert (ro1 = x"00000000") report "Erro, valor diferente de zero em regs[0]." severity error;
         
-        wait for 1 ns; -- Aguardar um ciclo de clock para garantir a escrita
-        
-        -- Ler o valor do registrador zero
-        rs1 <= (others => '0');
-        rs2 <= (others => '0');
-        rd <= (others => '0');
-        wait for 1 ns;
-        
-        assert ro1 = (others => '0')
-            report "O valor do registrador zero foi alterado indevidamente"
-            severity error;
-    
-        assert ro2 = std_logic_vector(to_unsigned(999, WSIZE))
-            report "O valor lido em ro2 não corresponde ao valor escrito no registrador zero"
-            severity error;
-        
+        report "Testes concluidos." severity note;
+
         wait;
-    end process;                       
+    end process;  
 end a;
