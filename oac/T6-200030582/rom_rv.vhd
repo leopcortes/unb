@@ -19,7 +19,7 @@ architecture RTL of rom_rv is
         variable rom_content : mem_type;
         
     begin
-        for i in 0 to (2 ** address'length)-1 loop
+        for i in 0 to (2**address'length)-1 loop
             readline(text_file, text_line);
             hread(text_line, rom_content(i));
         end loop;
