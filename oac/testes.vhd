@@ -1,13 +1,6 @@
--- Autor: Gabriel da Silva Corvino Nogueira
--- Email: gab.nog94@gmail.com
--- Matricula: 180113330
--- Descricao: ULA RISC-V
--- Language Syntax: VHDL 1076-2008
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 
 entity ulaRV is
 	generic (WSIZE : natural := 32);
@@ -79,5 +72,4 @@ begin
 			when others => result <= x"00000000";
 		end case;
 	end process;
-
 end architecture rtl;
