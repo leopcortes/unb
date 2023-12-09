@@ -11,6 +11,7 @@ end genImm32;
 
 architecture RTL of genImm32 is
   signal opCode : std_logic_vector(6 downto 0);
+  signal funct3 : std_logic_vector(14 downto 12);
 
 begin
   opCode <= instr(6 downto 0);

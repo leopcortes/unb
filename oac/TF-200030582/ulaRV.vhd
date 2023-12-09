@@ -18,7 +18,11 @@ architecture RTL of ulaRV is
 begin
   Z <= result;
   ulaRV : process (A, B, opcode, result) begin
-    if (a32 = x"00000000") then zero <= '1'; else zero <= '0'; end if;
+    if (result = x"00000000") then  
+      zero <= '1'; 
+    else 
+      zero <= '0'; 
+    end if;
 
     case opcode is
       -- ADD A, B

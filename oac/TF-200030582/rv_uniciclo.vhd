@@ -66,11 +66,11 @@ architecture RTL of rv_uniciclo is
 
   begin
   ipc : pc port map(clk, rst, pc_in, pc_out);
-  escolhe_pc <= (branch and not(zero)) or jal;
-
+  
   somador1 : somador port map(pc_out, x"00000004", pc_inc);
   somador2 : somador port map(pc_out, std_logic_vector(imm32), pc_salto);
-
+  
+  escolhe_pc <= (branch and not(zero)) or jal;
   mux0 : mux_2 port map(escolhe_pc, pc_inc, pc_salto, mux0_out);
   mux1 : mux_2 port map(jalr, mux0_out, saida_ula, pc_in);
   mux2 : mux_2 port map(alu_src, ro2, std_logic_vector(imm32), entradaB_ula);
@@ -79,8 +79,8 @@ architecture RTL of rv_uniciclo is
   megamux : mux_lui_auipc port map(lui, auipc, std_logic_vector(imm32), pc_out, mux4_out, data);
 
   ram : ram_rv port map(clk, mem_write, saida_ula(11 downto 0), ro2, ram_dataout);
-
   rom : rom_rv port map(pc_out(11 downto 2), rom_dataout);
+
   opcode <= rom_dataout(6 downto 0);
   rd     <= rom_dataout(11 downto 7);
   rs1    <= rom_dataout(19 downto 15);
