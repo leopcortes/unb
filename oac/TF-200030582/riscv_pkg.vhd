@@ -3,14 +3,14 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 package riscv_pkg is
-  constant IMEM_SIZE : integer := 1024;
-  constant IMEM_ADDR : integer := 12;
   constant WSIZE     : natural := 32;
-  constant BREG_IDX  : natural := 5;
-  constant ZERO32    : std_logic_vector(WSIZE-1 downto 0) := (others => '0');
-  constant INC_PC    : std_logic_vector(WSIZE-1 downto 0) := (2 => '1', others => '0');
+  constant IMEM_ADDR : integer := 12;
+  --constant IMEM_SIZE : integer := 1024;
+  --constant BREG_IDX  : natural := 5;
+  --constant ZERO32    : std_logic_vector(WSIZE-1 downto 0) := (others => '0');
+  --constant INC_PC    : std_logic_vector(WSIZE-1 downto 0) := (2 => '1', others => '0');
 
-  type word_array is array (natural range<>) of std_logic_vector(WSIZE-1 downto 0);
+  --type word_array is array (natural range<>) of std_logic_vector(WSIZE-1 downto 0);
 
   -- opcodes
   constant iRType  : std_logic_vector(6 downto 0) := "0110011";
@@ -75,7 +75,6 @@ package riscv_pkg is
     port(
       clk     : in  std_logic;
       clk_rom : in  std_logic;
-      rst     : in  std_logic;
       data    : out std_logic_vector(WSIZE-1 downto 0)
     );
   end component;
@@ -83,9 +82,9 @@ package riscv_pkg is
   component pc is
     generic(WSIZE : natural := 32);
     port(
-      clk, rst : in  std_logic;
-      d_in     : in  std_logic_vector(WSIZE-1 downto 0);
-      d_out   : out std_logic_vector(WSIZE-1 downto 0)
+      clk   : in  std_logic;
+      d_in  : in  std_logic_vector(WSIZE-1 downto 0);
+      d_out : out std_logic_vector(WSIZE-1 downto 0)
     );
   end component;
 
@@ -140,7 +139,7 @@ package riscv_pkg is
   end component;
 
   component controle is
-  port(
+    port(
       opcode     : in  std_logic_vector(6 downto 0);
       alu_op     : out std_logic_vector(1 downto 0);
       branch     : out std_logic;

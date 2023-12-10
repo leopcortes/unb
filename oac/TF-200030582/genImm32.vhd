@@ -52,4 +52,4 @@ begin
         imm32 <= resize("0", imm32'length);
       end if;
   end process;
-end architecture RTL;
+end RTL;

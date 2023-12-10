@@ -28,4 +28,4 @@ begin
   end process;
 
   dataout <= ram(to_integer(unsigned(read_address)));
-end architecture RTL;
+end RTL;

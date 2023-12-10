@@ -7,5 +7,6 @@
 
 	sw a1, 4(a0)
 	lw a3, 4(a0)
+
 loop:
 	beq zero, zero, loop

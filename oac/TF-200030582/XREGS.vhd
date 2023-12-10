@@ -24,4 +24,4 @@ begin
     ro1 <= regs(to_integer(unsigned(rs1)));
     ro2 <= regs(to_integer(unsigned(rs2)));
   end process;
-end architecture RTL;
+end RTL;

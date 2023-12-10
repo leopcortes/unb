@@ -10,5 +10,7 @@
 	srli a5, t0, 2
 	slli a6, t0, 2
 	slt  a7, t0, t1
+
+
 loop:
 	beq zero, zero, loop

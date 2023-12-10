@@ -60,4 +60,4 @@ begin
 
       end case;
   end process;
-end architecture RTL;
+end RTL;
