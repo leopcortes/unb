@@ -10,21 +10,14 @@
  """
 
 t = int(input())
-
 for _ in range(t):
     n = int(input())
-
-    # variavel de soma
     soma = 0
 
     # enquanto 'n' > 0 significa que quando chamarmos o pai do no '1' 
     # (ninguem visto que ele e a raiz da arvore) a soma chegou ao fim
     while n > 0:
-        #soma o valor do no 'n'
-        soma += n
-
-        # divisao inteira de 'n'
-        # "n //= 2" é a mesma coisa que "n = n // 2"
-        n //= 2
+        soma += n #soma o valor do no 'n'
+        n = n // 2 # divisao inteira de 'n'
     
     print(soma)

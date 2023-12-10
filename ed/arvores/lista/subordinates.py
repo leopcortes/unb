@@ -2,7 +2,7 @@
     Para descobrirmos a quantidade de de subordinados que cada empregado tem na empresa, basta
     calcularmos quantas folhas cada vertice da arvore tem. A folhas, nesse contexto, sao os empregados
     sem subordinados/funcionario abaixo dele na hierarquia da empresa.
- """
+"""
 
 import sys
 sys.setrecursionlimit(10**6)
