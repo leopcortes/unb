@@ -1,0 +1,562 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/intelFPGA/Trabalho-Final
+Econtrole
+Z0 w1702088631
+Z1 DPx4 work 9 riscv_pkg 0 22 m5YPN=zYY:Ej9Czg]mnzX0
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 24
+Z5 dD:/Desktop/Programacao/Programas/unb/oac/PF-200030582
+Z6 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle.vhd
+Z7 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle.vhd
+l0
+L6 1
+V>4j8ZLzJRBJK2B?9O6cE;1
+!s100 ]fhE6b648P<D>^fXn7j;50
+Z8 OV;C;2020.1;71
+33
+Z9 !s110 1702337119
+!i10b 1
+Z10 !s108 1702337118.000000
+Z11 !s90 -reportprogress|300|-work|riscv_uniciclo|-2008|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle.vhd|
+Z12 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle.vhd|
+!i113 1
+Z13 o-work riscv_uniciclo -2008 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Artl
+R1
+R2
+R3
+R4
+DEx4 work 8 controle 0 22 >4j8ZLzJRBJK2B?9O6cE;1
+!i122 24
+l24
+L23 137
+VGBR<]mg[O@>Xhhe]1ZJ_a1
+!s100 lMdS>5X?O0^jTHKVeB8Sf1
+R8
+33
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Econtrole_ula
+Z15 w1702166693
+R1
+Z16 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
+R2
+R3
+R4
+!i122 25
+R5
+Z17 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle_ula.vhd
+Z18 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle_ula.vhd
+l0
+L8 1
+VYN@fXj_H4CH?QT9H@>_>_2
+!s100 `A0b<F]gTc[APdYek_DZ:3
+R8
+33
+R9
+!i10b 1
+Z19 !s108 1702337119.000000
+Z20 !s90 -reportprogress|300|-work|riscv_uniciclo|-2008|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle_ula.vhd|
+Z21 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle_ula.vhd|
+!i113 1
+R13
+R14
+Artl
+R1
+R16
+R2
+R3
+R4
+DEx4 work 12 controle_ula 0 22 YN@fXj_H4CH?QT9H@>_>_2
+!i122 25
+l19
+L18 46
+VZn;kze9Xe0m_=>3U@M;dm1
+!s100 KX3im]]iTW<aifmDf<UZ61
+R8
+33
+R9
+!i10b 1
+R19
+R20
+R21
+!i113 1
+R13
+R14
+Egenimm32
+R15
+R2
+R3
+R4
+!i122 26
+R5
+Z22 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/genImm32.vhd
+Z23 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/genImm32.vhd
+l0
+L5 1
+V]_Bf<_2<XG0oWgnQIo;>63
+!s100 `WLC7gII^jYTM=GmLVGeM3
+R8
+32
+R9
+!i10b 1
+R19
+Z24 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/genImm32.vhd|
+Z25 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/genImm32.vhd|
+!i113 1
+Z26 o-work riscv_uniciclo -2002 -explicit
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 8 genimm32 0 22 ]_Bf<_2<XG0oWgnQIo;>63
+!i122 26
+l16
+L12 44
+V4QDz9iQ>;7NI3[0?SR[DH2
+!s100 3ReiQ3Ioe<M9HOMQXTG;_2
+R8
+32
+R9
+!i10b 1
+R19
+R24
+R25
+!i113 1
+R26
+R14
+Emux_2
+Z27 w1702088902
+R2
+R3
+R4
+!i122 27
+R5
+Z28 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_2.vhd
+Z29 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_2.vhd
+l0
+L5 1
+VWgG6iX^@QfL:DZLYBBH=F1
+!s100 ^HbOb7m6e2F0haHIa:m4E3
+R8
+32
+R9
+!i10b 1
+R19
+Z30 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_2.vhd|
+Z31 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_2.vhd|
+!i113 1
+R26
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 5 mux_2 0 22 WgG6iX^@QfL:DZLYBBH=F1
+!i122 27
+l15
+L14 4
+VJ6LW7J257:YPhH02h:cUk0
+!s100 =cb9FEBzEWiX6m<=YAWdU2
+R8
+32
+R9
+!i10b 1
+R19
+R30
+R31
+!i113 1
+R26
+R14
+Emux_lui_auipc
+Z32 w1702166698
+R2
+R3
+R4
+!i122 28
+R5
+Z33 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_lui.vhd
+Z34 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_lui.vhd
+l0
+L5 1
+VbVP@N>B5fIeQNVeTkALE80
+!s100 DOg4BD^f]8@k9n?zE85g>0
+R8
+32
+R9
+!i10b 1
+R19
+Z35 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_lui.vhd|
+Z36 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_lui.vhd|
+!i113 1
+R26
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 13 mux_lui_auipc 0 22 bVP@N>B5fIeQNVeTkALE80
+!i122 28
+l16
+L13 15
+V6OBKz0RbO>YzndIQ][<C@0
+!s100 m6^Q]80;MzZ^TF=RcXR;<0
+R8
+32
+R9
+!i10b 1
+R19
+R35
+R36
+!i113 1
+R26
+R14
+Epc
+Z37 w1702325258
+R2
+R3
+R4
+!i122 29
+R5
+Z38 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/pc.vhd
+Z39 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/pc.vhd
+l0
+L5 1
+V<:E0<f2GNZJ1SAVK;=`7H2
+!s100 =15nKP9^eRAX=fE;0nQL;2
+R8
+32
+Z40 !s110 1702337120
+!i10b 1
+R19
+Z41 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/pc.vhd|
+Z42 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/pc.vhd|
+!i113 1
+R26
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 2 pc 0 22 <:E0<f2GNZJ1SAVK;=`7H2
+!i122 29
+l17
+L14 13
+V?h4d>me>aL];FL>Fa<K`;2
+!s100 n_X86UWFN@@ooe4371C550
+R8
+32
+R40
+!i10b 1
+R19
+R41
+R42
+!i113 1
+R26
+R14
+Eram_rv
+Z43 w1702337106
+Z44 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z45 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R2
+R3
+R4
+!i122 30
+R5
+Z46 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ram_rv.vhd
+Z47 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ram_rv.vhd
+l0
+L7 1
+VHzEbaiG`>>H]d@`bEH>_S2
+!s100 S99[J]N>4:66FXM9:JRo<0
+R8
+33
+R40
+!i10b 1
+Z48 !s108 1702337120.000000
+Z49 !s90 -reportprogress|300|-work|riscv_uniciclo|-2008|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ram_rv.vhd|
+Z50 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ram_rv.vhd|
+!i113 1
+R13
+R14
+Artl
+R44
+R45
+R2
+R3
+R4
+DEx4 work 6 ram_rv 0 22 HzEbaiG`>>H]d@`bEH>_S2
+!i122 30
+l40
+L17 34
+VjjUJik9CR3<oVFMzoPXj=1
+!s100 17nGH[1Te]nD@a?CXL_J`2
+R8
+33
+R40
+!i10b 1
+R48
+R49
+R50
+!i113 1
+R13
+R14
+Priscv_pkg
+R2
+R3
+R4
+!i122 31
+w1702330154
+R5
+8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/riscv_pkg.vhd
+FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/riscv_pkg.vhd
+l0
+L5 1
+Vm5YPN=zYY:Ej9Czg]mnzX0
+!s100 UZHcPg0Gelg3keBSmQg[n2
+R8
+32
+R40
+!i10b 1
+R48
+!s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/riscv_pkg.vhd|
+!s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/riscv_pkg.vhd|
+!i113 1
+R26
+R14
+Erom_rv
+Z51 w1702337114
+R2
+R3
+R4
+!i122 32
+R5
+Z52 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rom_rv.vhd
+Z53 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rom_rv.vhd
+l0
+L6 1
+V9SQe`7Mf^]UHW8DYn0U8b0
+!s100 @EQH>6SCSbSaLiNn^PSOZ3
+R8
+33
+R40
+!i10b 1
+R48
+Z54 !s90 -reportprogress|300|-work|riscv_uniciclo|-2008|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rom_rv.vhd|
+Z55 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rom_rv.vhd|
+!i113 1
+R13
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 6 rom_rv 0 22 9SQe`7Mf^]UHW8DYn0U8b0
+!i122 32
+l35
+L13 26
+Vi47[DB0M>AfZKJUj1QXCc0
+!s100 K5FUJTVZT7z;j56jk22g=0
+R8
+33
+R40
+!i10b 1
+R48
+R54
+R55
+!i113 1
+R13
+R14
+Erv_uniciclo
+Z56 w1702329849
+R1
+R2
+R3
+R4
+!i122 33
+R5
+Z57 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rv_uniciclo.vhd
+Z58 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rv_uniciclo.vhd
+l0
+L6 1
+V>2]<PQj>KPE7VWKKVXL?72
+!s100 kf?af]fJVFl;fg3DW<Y5C2
+R8
+32
+R40
+!i10b 1
+R48
+Z59 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rv_uniciclo.vhd|
+Z60 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rv_uniciclo.vhd|
+!i113 1
+R26
+R14
+Artl
+R1
+R2
+R3
+R4
+DEx4 work 11 rv_uniciclo 0 22 >2]<PQj>KPE7VWKKVXL?72
+!i122 33
+l72
+L12 105
+VKGD?R?gP_jkk^gVX[E]JC2
+!s100 :eXEoNTXXbILi7L4RSf0;2
+R8
+32
+R40
+!i10b 1
+R48
+R59
+R60
+!i113 1
+R26
+R14
+Esomador
+Z61 w1702088491
+R2
+R3
+R4
+!i122 34
+R5
+Z62 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/somador.vhd
+Z63 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/somador.vhd
+l0
+L5 1
+Vj;D9Qmm@VMUU^fLRY6QJL0
+!s100 ;gb80:TF6d2E9alf<[IA?2
+R8
+32
+R40
+!i10b 1
+R48
+Z64 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/somador.vhd|
+Z65 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/somador.vhd|
+!i113 1
+R26
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 7 somador 0 22 j;D9Qmm@VMUU^fLRY6QJL0
+!i122 34
+l14
+L13 4
+VeW;4]1GaAI2lKSWKVVj050
+!s100 @69N=n?RU^]H1eI7BdgcF3
+R8
+32
+R40
+!i10b 1
+R48
+R64
+R65
+!i113 1
+R26
+R14
+Eularv
+R15
+R2
+R3
+R4
+!i122 35
+R5
+Z66 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ulaRV.vhd
+Z67 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ulaRV.vhd
+l0
+L5 1
+VAT5Mm=@4866_Cf;Bn]WK03
+!s100 =SYd4SCYNHmWaN@NP<<WF0
+R8
+32
+Z68 !s110 1702337121
+!i10b 1
+Z69 !s108 1702337121.000000
+Z70 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ulaRV.vhd|
+Z71 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ulaRV.vhd|
+!i113 1
+R26
+R14
+Artl
+R2
+R3
+R4
+DEx4 work 5 ularv 0 22 AT5Mm=@4866_Cf;Bn]WK03
+!i122 35
+l18
+L15 91
+VlA9NkW_?OaczS@`V:_^[;2
+!s100 Q9YagYhc?dc[KOG_F3:4g0
+R8
+32
+R68
+!i10b 1
+R69
+R70
+R71
+!i113 1
+R26
+R14
+Exregs
+Z72 w1702167393
+R2
+R3
+R4
+!i122 36
+R5
+Z73 8D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/XREGS.vhd
+Z74 FD:/Desktop/Programacao/Programas/unb/oac/PF-200030582/XREGS.vhd
+l0
+L5 1
+V:<l3@4>cU1Y^9LQ00h^M_1
+!s100 @]Djno;]ozKDXj`iT^IzP3
+R8
+32
+R68
+!i10b 1
+R69
+Z75 !s90 -reportprogress|300|-work|riscv_uniciclo|-2002|-explicit|-stats=none|D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/XREGS.vhd|
+Z76 !s107 D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/XREGS.vhd|
+!i113 1
+R26
+R14
+Artl
+R2
+R3
+R4
+Z77 DEx4 work 5 xregs 0 22 :<l3@4>cU1Y^9LQ00h^M_1
+!i122 36
+l19
+Z78 L15 13
+Z79 V7FSViIBGgjdhcR2@Bmb:Z2
+Z80 !s100 QB6::BzA3Mo?ERMl^A3FT3
+R8
+32
+R68
+!i10b 1
+R69
+R75
+R76
+!i113 1
+R26
+R14

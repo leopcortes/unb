@@ -1,0 +1,123 @@
+D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/XREGS.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/XREGS.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity XREGS
+-- Compiling architecture RTL of XREGS
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/pc.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/pc.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity pc
+-- Compiling architecture RTL of pc
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rv_uniciclo.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rv_uniciclo.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package riscv_pkg
+-- Compiling entity rv_uniciclo
+-- Compiling architecture RTL of rv_uniciclo
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle_ula.vhd {1 {vcom -work riscv_uniciclo -2008 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle_ula.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Loading package riscv_pkg
+-- Compiling entity controle_ula
+-- Compiling architecture RTL of controle_ula
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/riscv_pkg.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/riscv_pkg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package riscv_pkg
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/genImm32.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/genImm32.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity genImm32
+-- Compiling architecture RTL of genImm32
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ulaRV.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ulaRV.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ulaRV
+-- Compiling architecture RTL of ulaRV
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_2.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_2.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity mux_2
+-- Compiling architecture RTL of mux_2
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_lui.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/mux_lui.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity mux_lui_auipc
+-- Compiling architecture RTL of mux_lui_auipc
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rom_rv.vhd {1 {vcom -work riscv_uniciclo -2008 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/rom_rv.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity rom_rv
+-- Compiling architecture RTL of rom_rv
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/somador.vhd {1 {vcom -work riscv_uniciclo -2002 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/somador.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity somador
+-- Compiling architecture RTL of somador
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle.vhd {1 {vcom -work riscv_uniciclo -2008 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/controle.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package riscv_pkg
+-- Compiling entity controle
+-- Compiling architecture RTL of controle
+
+} {} {}} D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ram_rv.vhd {1 {vcom -work riscv_uniciclo -2008 -explicit -stats=none D:/Desktop/Programacao/Programas/unb/oac/PF-200030582/ram_rv.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity ram_rv
+-- Compiling architecture RTL of ram_rv
+
+} {} {}}
