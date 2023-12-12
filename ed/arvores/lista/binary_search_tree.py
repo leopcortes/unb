@@ -73,14 +73,11 @@ class Arvore_Binaria():
         if raiz == None:
             raiz = self.raiz
 
-        # vetor de retorno
-        ret = []
-
-        # subarvore da esquerda
-        esq = self.nos[raiz][0]
+        ret = [] # vetor de retorno
         
-        # subarvore da direita
-        dir = self.nos[raiz][1]
+        esq = self.nos[raiz][0] # subarvore da esquerda
+        
+        dir = self.nos[raiz][1] # subarvore da direita
 
         # se tiver subarvore, adiciona a ordem pos-order da subarvore da esquerda na resposta
         if esq != None:
@@ -90,8 +87,7 @@ class Arvore_Binaria():
         if dir != None:
             ret += self.pos_order(dir)
 
-        # adiciona a raiz da arvore atual no vetor de retorno
-        ret.append(raiz)
+        ret.append(raiz) # adiciona a raiz da arvore atual no vetor de retorno
         
         return ret
 
@@ -99,15 +95,12 @@ arvore_binaria = Arvore_Binaria()
 while True:
     try:
         no = int(input())
-
-        # adiciona um no na arvore binaria de busca
-        arvore_binaria.add_no(no)
+        arvore_binaria.add_no(no) # adiciona um no na arvore binaria de busca
     
     except EOFError:
         break
 
-# resposta = vetor contendo a pos-order da arvore
-ans = arvore_binaria.pos_order()
+ans = arvore_binaria.pos_order() # resposta = vetor contendo a pos-order da arvore
 for no in ans:
     print(no)
     
