@@ -17,7 +17,7 @@ architecture RTL of XREGS is
   signal regs : breg := (others => x"00000000");
 
 begin
-  process(clk) begin
+  process (clk) begin
     if rising_edge(clk) and (wren = '1') and (rd /= "00000") then
       regs(to_integer(unsigned(rd))) <= data;
     end if;

@@ -1,11 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.riscv_pkg.all;
 
 entity genImm32 is
   port (
-    instr : in  std_logic_vector(31 downto 0);
-    imm32 : out signed (31 downto 0)
+    instr : in  std_logic_vector(WSIZE-1 downto 0);
+    imm32 : out signed(WSIZE-1 downto 0)
   );
 end genImm32;
 
@@ -17,7 +18,7 @@ begin
   opCode <= instr(6 downto 0);
   funct3 <= instr(14 downto 12);
 
-  process(opCode, funct3, instr)
+  process (opCode, funct3, instr)
     begin
       -- R_type
       if (opCode = "0110011") then

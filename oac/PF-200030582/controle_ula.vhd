@@ -17,7 +17,7 @@ end entity controle_ula;
 
 architecture RTL of controle_ula is
 begin
-  process(alu_op, funct3, funct7)
+  process (alu_op, funct3, funct7)
     begin
       case(alu_op) is
         when "00" => opcode <= ULA_ADD;

@@ -1,9 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.riscv_pkg.all;
 
 entity ulaRV is
-  generic (WSIZE : natural := 32);
   port (
     opcode : in  std_logic_vector(3 downto 0);
     A, B   : in  std_logic_vector(WSIZE-1 downto 0);
@@ -13,7 +13,7 @@ entity ulaRV is
 end ulaRV;
 
 architecture RTL of ulaRV is
-  signal result : std_logic_vector(31 downto 0);
+  signal result : std_logic_vector(WSIZE-1 downto 0);
 
 begin
   Z <= result;
@@ -50,52 +50,22 @@ begin
       when "0111" => result <= std_logic_vector(shift_right(signed(A), to_integer(unsigned(B))));
 
       -- SLT A, B
-      when "1000" =>
-        if signed(A) < signed(B) then
-          result <= x"00000001";
-        else
-          result <= x"00000000";
-        end if;
+      when "1000" => if signed(A) < signed(B) then result <= x"00000001"; else result <= x"00000000"; end if;
 
       -- SLTU A, B
-      when "1001" =>
-        if unsigned(A) < unsigned(B) then
-          result <= x"00000001";
-        else
-          result <= x"00000000";
-        end if;
+      when "1001" => if unsigned(A) < unsigned(B) then result <= x"00000001"; else result <= x"00000000"; end if;
 
       -- SGE A, B
-      when "1010" =>
-        if signed(A) >= signed(B) then
-          result <= x"00000001";
-        else
-          result <= x"00000000";
-        end if;
+      when "1010" => if signed(A) >= signed(B) then result <= x"00000001"; else result <= x"00000000"; end if;
 
       -- SGEU A, B
-      when "1011" =>
-        if unsigned(A) >= unsigned(B) then
-          result <= x"00000001";
-        else
-          result <= x"00000000";
-        end if;
+      when "1011" => if unsigned(A) >= unsigned(B) then result <= x"00000001"; else result <= x"00000000"; end if;
 
       -- SEQ A, B
-      when "1100" =>
-        if A = B then
-          result <= x"00000001";
-        else
-          result <= x"00000000";
-        end if;
+      when "1100" => if A = B then result <= x"00000001"; else result <= x"00000000"; end if;
 
       -- SNE A, B
-      when "1101" =>
-        if A /= B then
-          result <= x"00000001";
-        else
-          result <= x"00000000";
-        end if;
+      when "1101" => if A /= B then result <= x"00000001"; else result <= x"00000000"; end if;
 
       -- Unknown
       when others => result <= x"00000000";

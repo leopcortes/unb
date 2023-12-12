@@ -17,7 +17,7 @@ begin
   opcode <= instr(6 downto 0);
   funct3 <= instr(14 downto 12);
 
-  process(opcode, funct3, instr)
+  process (opcode, funct3, instr)
   begin
   	-- R_type
     if (opcode = "0110011") then

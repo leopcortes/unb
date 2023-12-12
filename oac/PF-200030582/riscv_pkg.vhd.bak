@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 package riscv_pkg is
   constant WSIZE     : natural := 32;
-  constant IMEM_ADDR : integer := 8;
+  constant IMEM_ADDR : integer := 12;
 
   -- opcodes
   constant iRType  : std_logic_vector(6 downto 0) := "0110011";
@@ -67,7 +67,7 @@ package riscv_pkg is
 
   component rv_uniciclo is
     port (
-      clk : in std_logic
+      clk : in  std_logic;
     );
   end component;
 

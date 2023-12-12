@@ -22,7 +22,7 @@ end controle;
 
 architecture RTL of controle is
 begin
-  process(opcode)
+  process (opcode)
     begin
       case opcode is
         when iRType =>

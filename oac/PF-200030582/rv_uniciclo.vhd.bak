@@ -108,9 +108,9 @@ begin
 
   process begin
     aux_clk <= '0';
-    wait for 1 ns;
+    wait for 100 ns;
     aux_clk <= '1';
-    wait for 1 ns;
+    wait for 100 ns;
   end process;
 
 end RTL;

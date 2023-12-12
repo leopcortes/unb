@@ -16,7 +16,7 @@ architecture RTL of pc is
 
 begin
   d_out <= pc_value; --
-  process(clk)
+  process (clk)
     begin
       if (rising_edge(clk)) then
         pc_value <= d_in;
