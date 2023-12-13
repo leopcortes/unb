@@ -84,18 +84,20 @@ begin
   funct3 <= instruction(14 downto 12);
   funct7 <= instruction(30);
 
-  escolhe_pc <= branch and zero;
-
   somador_pc_4 : somador port map(pc_out, x"00000004", soma_pc_4);
   somador_pc_imm : somador port map(pc_out, imm32, soma_pc_imm);
+  
+  escolhe_pc <= branch and zero;
+  
+  mux_pc : mux_2 port map(escolhe_pc, soma_pc_4, soma_pc_imm, pc_somado);
+  
+  mux_lui   : mux_2_5bits port map(is_lui, rs1, "00000", select_rs1_final);
 
-  mux_somadores : mux_2 port map(escolhe_pc, soma_pc_4, soma_pc_imm, pc_somado);
-
+  bregs : XREGS port map(aux_clk, reg_write, select_rs1_final, rs2, rd, data, ro1, ro2);
+  
   genimm : genImm32 port map(instruction, imm32);
 
   ctrl : controle port map(opcode, branch, mem_read, mem_to_reg, alu_op, mem_write, alu_src, reg_write, is_lui, is_auipc, is_jal, is_jalr);
-
-  bregs : XREGS port map(aux_clk, reg_write, select_rs1_final, rs2, rd, data, ro1, ro2);
 
   mux_ula : mux_2 port map(alu_src, ro2, imm32, inB_ula);
 
@@ -106,7 +108,6 @@ begin
   md : ram_rv port map(aux_clk, mem_write, ram_address, ram_datain, ram_dataout);
 
   mux_ram   : mux_2 port map(mem_to_reg, saida_ula, ram_dataout, mux_ram_out);
-  mux_lui   : mux_2_5bits port map(is_lui, rs1, "00000", select_rs1_final);
   mux_auipc : mux_2 port map(is_auipc, mux_ram_out, soma_pc_imm, mux_auipc_out);
   mux_jal   : mux_2 port map(is_jal, mux_auipc_out, soma_pc_4, data);
   mux_jalr  : mux_2 port map(is_jalr, pc_somado, saida_ula, pc_in);
