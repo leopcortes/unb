@@ -1,0 +1,51 @@
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use std.textio.all;	
+use work.riscv_pkg.all;
+	
+entity ram_rv is
+  port (
+    clk     : in  std_logic;
+    wren    : in  std_logic;
+    address : in  std_logic_vector;
+    datain  : in  std_logic_vector;
+    dataout : out std_logic_vector
+  );
+end entity ram_rv;
+
+architecture RTL of ram_rv is 
+  type ram_type is array (0 to (2**address'length-1)) of std_logic_vector(datain'range);
+
+  impure function init_ram_hex return ram_type is
+    file text_file       : text open read_mode is "D:\Desktop\Programacao\Programas\unb\oac\PF-200030582\tests\tests_data.txt"; -- "tests_data.txt"
+    variable text_line   : line;
+    variable ram_content : ram_type;
+		
+    begin 
+      for i in 0 to (2**address'length)-1 loop
+        if not endfile(text_file) then
+          readline(text_file, text_line);
+          hread(text_line, ram_content(i));
+        end if;
+      end loop;
+
+      return ram_content;
+    end function;	
+	
+  signal ram  : ram_type := init_ram_hex;
+  signal addr : std_logic_vector(address'range);
+
+begin
+  process(clk) begin
+    if rising_edge(clk) and wren = '1' then 
+      ram(to_integer(unsigned(address))) <= datain;
+    end if;
+
+    addr <= address;
+  end process;
+
+  dataout <= ram(to_integer(unsigned(addr)));
+
+end RTL;

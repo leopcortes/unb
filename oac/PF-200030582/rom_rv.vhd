@@ -1,0 +1,43 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use std.textio.all;	
+use work.riscv_pkg.all;
+
+entity rom_rv is 
+	port(
+		address: in  std_logic_vector;
+		dataout: out std_logic_vector
+	);
+end entity rom_rv;
+
+architecture RTL of rom_rv is 
+	type rom_type is array (0 to (2**address'length)-1) of std_logic_vector(dataout'range);
+	
+	impure function init_rom_hex return rom_type is
+    file text_file       : text open read_mode is "D:\Desktop\Programacao\Programas\unb\oac\PF-200030582\tests\tests_text.txt"; -- "tests_text.txt"
+    variable text_line   : line;
+    variable rom_content : rom_type;
+
+  begin 
+    for i in 0 to (2**address'length)-1 loop
+      if not endfile(text_file) then
+        readline(text_file, text_line);
+        hread(text_line, rom_content(i));
+      end if;
+    end loop;
+
+    return rom_content;
+  end function;
+	
+	signal rom  : rom_type := init_rom_hex;
+	signal addr : std_logic_vector(address'range);
+
+begin
+  addr <= address;
+
+  process (addr) begin
+    dataout <= rom(to_integer(unsigned(addr)));
+  end process;
+
+end RTL;
