@@ -15,7 +15,7 @@ entity controle is
     reg_write  : out std_logic;
     is_lui     : out std_logic;
     is_auipc   : out std_logic;
-    is_jal     : out std_logic;
+    is_jalx    : out std_logic;
     is_jalr    : out std_logic
   );
 end entity controle;
@@ -35,7 +35,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
       
       -- I-Type (Logico Aritmetico)
@@ -49,7 +49,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
         
       -- S Type-(SW)
@@ -63,7 +63,7 @@ begin
         reg_write  <= '0';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
         
       -- LW
@@ -77,7 +77,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
       
       -- B(SB)-Type
@@ -91,7 +91,7 @@ begin
         reg_write  <= '0';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
       
       -- U-Type (LUI)
@@ -105,7 +105,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '1';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
         
       -- U-Type (AUIPC)
@@ -119,7 +119,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '0';
         is_auipc   <= '1';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
         
       -- UJ-Type (JAL)
@@ -133,7 +133,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '1';
+        is_jalx    <= '1';
         is_jalr    <= '0';
       
       -- JALR
@@ -147,7 +147,7 @@ begin
         reg_write  <= '1';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '1';
+        is_jalx    <= '1';
         is_jalr    <= '1';
         
       -- Unknown
@@ -161,7 +161,7 @@ begin
         reg_write  <= '0';
         is_lui     <= '0';
         is_auipc   <= '0';
-        is_jal     <= '0';
+        is_jalx    <= '0';
         is_jalr    <= '0';
       
     end case;

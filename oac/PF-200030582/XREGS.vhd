@@ -21,8 +21,7 @@ begin
     if rising_edge(clk) and (wren = '1') and (rd /= "00000") then
       regs(to_integer(unsigned(rd))) <= data;
     end if;
-    
-    ro1 <= regs(to_integer(unsigned(rs1)));
-    ro2 <= regs(to_integer(unsigned(rs2)));
   end process;
+  ro1 <= regs(to_integer(unsigned(rs1)));
+  ro2 <= regs(to_integer(unsigned(rs2)));
 end RTL;

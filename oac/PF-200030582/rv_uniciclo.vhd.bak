@@ -62,6 +62,9 @@ architecture RTL of rv_uniciclo is
   -- Branch
   signal escolhe_pc : std_logic;
 
+  -- JAL/JALR
+  signal escolhe_jal : std_logic;
+
   -- Somadores
   signal soma_pc_4   : std_logic_vector(WSIZE-1 downto 0); -- PC + 4
   signal soma_pc_imm : std_logic_vector(WSIZE-1 downto 0); -- PC + Imm
@@ -87,7 +90,7 @@ begin
   somador_pc_4 : somador port map(pc_out, x"00000004", soma_pc_4);
   somador_pc_imm : somador port map(pc_out, imm32, soma_pc_imm);
   
-  escolhe_pc <= branch and zero;
+  escolhe_pc <= (branch and zero) or is_jalx;
   
   mux_pc : mux_2 port map(escolhe_pc, soma_pc_4, soma_pc_imm, pc_somado);
   
@@ -107,7 +110,7 @@ begin
 
   md : ram_rv port map(aux_clk, mem_write, ram_address, ram_datain, ram_dataout);
 
-  mux_jalr  : mux_2 port map(is_jalr, pc_somado, saida_ula, pc_in);
+  mux_jalr  : mux_2 port map(is_jalx, pc_somado, saida_ula, pc_in);
 
   mux_ram   : mux_2 port map(mem_to_reg, saida_ula, ram_dataout, mux_ram_out);
   mux_auipc : mux_2 port map(is_auipc, mux_ram_out, soma_pc_imm, mux_auipc_out);

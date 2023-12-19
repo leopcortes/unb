@@ -90,7 +90,7 @@ package riscv_pkg is
       reg_write  : out std_logic;
       is_lui     : out std_logic;
       is_auipc   : out std_logic;
-      is_jal     : out std_logic;
+      is_jalx     : out std_logic;
       is_jalr    : out std_logic
     );
   end component;
