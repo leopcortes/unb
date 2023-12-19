@@ -1,0 +1,7 @@
+Após a apresentação do projeto final via teams, o código teve uma pequena alteração: 
+O sinal de controle 'is_jal' passa a se chamar 'is_jalx', e agora em operações jalr (opcode = "1100111")
+os dois sinais 'is_jalr' e 'is_jalx' são ativados para fazer o salto e salvar em rd o valor de PC+4.
+O diagrama permanece inalterado, e os testes retornam o mesmo resultado (pois os testes de jalr em 
+'uniciclo.asm' não precisavam do valor de PC+4).
+Obs: nas imagens dos testes no relatório a instrução auipc apresenta o resultado errado pois o sinal
+mostrado foi a saída da ula, porém o resultado correto está sendo escrito em rd (foi mostrado na apresentação).

@@ -41,7 +41,7 @@ architecture RTL of rv_uniciclo is
   signal reg_write  : std_logic;
   signal is_lui     : std_logic;
   signal is_auipc   : std_logic;
-  signal is_jalx     : std_logic;
+  signal is_jalx    : std_logic;
   signal is_jalr    : std_logic;
 
   -- Banco de Registradores
@@ -51,11 +51,11 @@ architecture RTL of rv_uniciclo is
   -- Unidade Logica Aritmetica (ULA)
   signal ula_opcode : std_logic_vector(3 downto 0);
   signal inB_ula    : std_logic_vector(WSIZE-1 downto 0);
-  signal saida_ula  : std_logic_vector(WSIZE-1 downto 0);
+  signal ula_out    : std_logic_vector(WSIZE-1 downto 0);
   signal zero       : std_logic;
 
   -- Memoria de Dados (RAM)
-  alias  ram_address : std_logic_vector(IMEM_ADDR-1 downto 0) is saida_ula(9 downto 2);
+  alias  ram_address : std_logic_vector(IMEM_ADDR-1 downto 0) is ula_out(9 downto 2);
   alias  ram_datain  : std_logic_vector is ro2;
   signal ram_dataout : std_logic_vector(WSIZE-1 downto 0);
 
@@ -67,10 +67,10 @@ architecture RTL of rv_uniciclo is
   signal soma_pc_imm : std_logic_vector(WSIZE-1 downto 0); -- PC + Imm
 
   -- Multiplexadores 
-  signal pc_somado        : std_logic_vector(WSIZE-1 downto 0); -- PC
-  signal select_rs1_final : std_logic_vector(4 downto 0); -- LUI
-  signal mux_ram_out      : std_logic_vector(WSIZE-1 downto 0); -- RAM
-  signal mux_auipc_out    : std_logic_vector(WSIZE-1 downto 0); -- AUIPC
+  signal pc_somado     : std_logic_vector(WSIZE-1 downto 0); -- PC
+  signal select_rs1    : std_logic_vector(4 downto 0);       -- LUI
+  signal mux_ram_out   : std_logic_vector(WSIZE-1 downto 0); -- RAM
+  signal mux_auipc_out : std_logic_vector(WSIZE-1 downto 0); -- AUIPC
 
 begin
   ipc : pc port map(aux_clk, pc_in, pc_out);
@@ -91,9 +91,9 @@ begin
   
   mux_pc : mux_2 port map(escolhe_pc, soma_pc_4, soma_pc_imm, pc_somado);
   
-  mux_lui : mux_2_5bits port map(is_lui, rs1, "00000", select_rs1_final);
+  mux_lui : mux_2_5bits port map(is_lui, rs1, "00000", select_rs1);
 
-  bregs : XREGS port map(aux_clk, reg_write, select_rs1_final, rs2, rd, data, ro1, ro2);
+  bregs : XREGS port map(aux_clk, reg_write, select_rs1, rs2, rd, data, ro1, ro2);
   
   genimm : genImm32 port map(instruction, imm32);
 
@@ -103,13 +103,13 @@ begin
 
   ctrl_ula : controle_ula port map(alu_op, funct3, funct7, ula_opcode);
 
-  ula : ula_rv port map(ula_opcode, ro1, inB_ula, saida_ula, zero);
+  ula : ula_rv port map(ula_opcode, ro1, inB_ula, ula_out, zero);
 
   md : ram_rv port map(aux_clk, mem_write, ram_address, ram_datain, ram_dataout);
 
-  mux_jalr  : mux_2 port map(is_jalr, pc_somado, saida_ula, pc_in);
+  mux_jalr  : mux_2 port map(is_jalr, pc_somado, ula_out, pc_in);
 
-  mux_ram   : mux_2 port map(mem_to_reg, saida_ula, ram_dataout, mux_ram_out);
+  mux_ram   : mux_2 port map(mem_to_reg, ula_out, ram_dataout, mux_ram_out);
   mux_auipc : mux_2 port map(is_auipc, mux_ram_out, soma_pc_imm, mux_auipc_out);
   mux_jalx  : mux_2 port map(is_jalx, mux_auipc_out, soma_pc_4, data);
 
