@@ -1,0 +1,568 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Desktop/Code/unb/oac/PF-200030582
+Econtrole
+Z1 w1702425403
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 26
+R0
+Z5 8D:/Desktop/Code/unb/oac/PF-200030582/controle.vhd
+Z6 FD:/Desktop/Code/unb/oac/PF-200030582/controle.vhd
+l0
+L6 1
+VcI7RaPNhL5_I;gBGBnm;n1
+!s100 924>kzE3d8mW8lz`Rf8bL2
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1703010508
+!i10b 1
+Z9 !s108 1703010508.000000
+Z10 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/controle.vhd|
+Z11 !s107 D:/Desktop/Code/unb/oac/PF-200030582/controle.vhd|
+!i113 1
+Z12 o-work riscv -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R2
+R3
+R4
+DEx4 work 8 controle 0 22 cI7RaPNhL5_I;gBGBnm;n1
+!i122 26
+l24
+L23 147
+VB1@SRVY47C_Zna?dKek6d2
+!s100 d`eJYf6;03S8MD0DJm<E20
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Econtrole_ula
+Z14 w1702419602
+Z15 DPx4 work 9 riscv_pkg 0 22 2lmkaDMEkXb2LY[eAL0D62
+R2
+R3
+R4
+!i122 27
+R0
+Z16 8D:/Desktop/Code/unb/oac/PF-200030582/controle_ula.vhd
+Z17 FD:/Desktop/Code/unb/oac/PF-200030582/controle_ula.vhd
+l0
+L7 1
+VVU>:[nFl:m^a:6OU]R>SN0
+!s100 o4i0Glc05OGL:ihYM[leY2
+R7
+32
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/controle_ula.vhd|
+Z19 !s107 D:/Desktop/Code/unb/oac/PF-200030582/controle_ula.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 12 controle_ula 0 22 VU>:[nFl:m^a:6OU]R>SN0
+!i122 27
+l17
+L16 102
+Ve[GF^dAE^017IZLh^F=Jo3
+!s100 _L]KS6?Ze`c;7Ck1AZ1E^0
+R7
+32
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R12
+R13
+Egenimm32
+Z20 w1702428132
+R2
+R3
+R4
+!i122 28
+R0
+Z21 8D:/Desktop/Code/unb/oac/PF-200030582/genImm32.vhd
+Z22 FD:/Desktop/Code/unb/oac/PF-200030582/genImm32.vhd
+l0
+L5 1
+VN1B=<M8H>ZWAmccA@X>eo0
+!s100 Rb9kR0H7J4m7P0@d2S0?b2
+R7
+32
+R8
+!i10b 1
+R9
+Z23 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/genImm32.vhd|
+Z24 !s107 D:/Desktop/Code/unb/oac/PF-200030582/genImm32.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 8 genimm32 0 22 N1B=<M8H>ZWAmccA@X>eo0
+!i122 28
+l16
+L12 40
+VJc`nO0z<D@dNXH8QDiLjj3
+!s100 @oaaBN>3XNmYTLQHinUXQ3
+R7
+32
+R8
+!i10b 1
+R9
+R23
+R24
+!i113 1
+R12
+R13
+Emux_2
+Z25 w1702419630
+R15
+R2
+R3
+R4
+!i122 29
+R0
+Z26 8D:/Desktop/Code/unb/oac/PF-200030582/mux_2.vhd
+Z27 FD:/Desktop/Code/unb/oac/PF-200030582/mux_2.vhd
+l0
+L6 1
+VfjLHNTh=TO`XAHR06_]ZF3
+!s100 <QF_PcBdMK8n9Ya5f^<fo0
+R7
+32
+R8
+!i10b 1
+R9
+Z28 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/mux_2.vhd|
+Z29 !s107 D:/Desktop/Code/unb/oac/PF-200030582/mux_2.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 5 mux_2 0 22 fjLHNTh=TO`XAHR06_]ZF3
+!i122 29
+l15
+L14 4
+V=Eb=SaZJQ6UD;=5BnhKWJ1
+!s100 =cb9FEBzEWiX6m<=YAWdU2
+R7
+32
+R8
+!i10b 1
+R9
+R28
+R29
+!i113 1
+R12
+R13
+Emux_2_5bits
+Z30 w1702419704
+R2
+R3
+R4
+!i122 30
+R0
+Z31 8D:/Desktop/Code/unb/oac/PF-200030582/mux_2_5bits.vhd
+Z32 FD:/Desktop/Code/unb/oac/PF-200030582/mux_2_5bits.vhd
+l0
+L5 1
+V9OinOKg?MzWKP9;;90eda1
+!s100 z?W[fe`Eh[9INKY4R:gG_1
+R7
+32
+Z33 !s110 1703010509
+!i10b 1
+Z34 !s108 1703010509.000000
+Z35 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/mux_2_5bits.vhd|
+Z36 !s107 D:/Desktop/Code/unb/oac/PF-200030582/mux_2_5bits.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 11 mux_2_5bits 0 22 9OinOKg?MzWKP9;;90eda1
+!i122 30
+l14
+Z37 L13 4
+V@j[W5jojTMX6Z_66;GR0a3
+!s100 ^afJ^i64ii6?88F;o>=c62
+R7
+32
+R33
+!i10b 1
+R34
+R35
+R36
+!i113 1
+R12
+R13
+Epc
+Z38 w1702423801
+R15
+R2
+R3
+R4
+!i122 31
+R0
+Z39 8D:/Desktop/Code/unb/oac/PF-200030582/pc.vhd
+Z40 FD:/Desktop/Code/unb/oac/PF-200030582/pc.vhd
+l0
+L6 1
+V=lS6@P63=IXnaen^9[Ffb1
+!s100 jcTDnU<W=]XikR@Z66>K;3
+R7
+32
+R33
+!i10b 1
+R34
+Z41 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/pc.vhd|
+Z42 !s107 D:/Desktop/Code/unb/oac/PF-200030582/pc.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 2 pc 0 22 =lS6@P63=IXnaen^9[Ffb1
+!i122 31
+l15
+L14 9
+VG3M]8`oDZm:eEC09hEobc1
+!s100 HGon=9EJN[D1JWjf`@3Gn0
+R7
+32
+R33
+!i10b 1
+R34
+R41
+R42
+!i113 1
+R12
+R13
+Eram_rv
+Z43 w1702576274
+R15
+R2
+R3
+R4
+!i122 32
+R0
+Z44 8D:/Desktop/Code/unb/oac/PF-200030582/ram_rv.vhd
+Z45 FD:/Desktop/Code/unb/oac/PF-200030582/ram_rv.vhd
+l0
+L8 1
+VlfOHi6J7S_aoGe4<@5>Q;1
+!s100 `Vj`O`Lm<BM[[i13ij4593
+R7
+33
+R33
+!i10b 1
+R34
+Z46 !s90 -reportprogress|300|-work|riscv|-2008|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/ram_rv.vhd|
+Z47 !s107 D:/Desktop/Code/unb/oac/PF-200030582/ram_rv.vhd|
+!i113 1
+Z48 o-work riscv -2008 -explicit
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 6 ram_rv 0 22 lfOHi6J7S_aoGe4<@5>Q;1
+!i122 32
+l40
+L18 34
+VAmOfP_S5GmoQE`BF2DXLZ0
+!s100 CEGLKI7zISYgBCPDYbfYH2
+R7
+33
+R33
+!i10b 1
+R34
+R46
+R47
+!i113 1
+R48
+R13
+Priscv_pkg
+R2
+R3
+R4
+!i122 33
+R1
+R0
+8D:/Desktop/Code/unb/oac/PF-200030582/riscv_pkg.vhd
+FD:/Desktop/Code/unb/oac/PF-200030582/riscv_pkg.vhd
+l0
+L5 1
+V2lmkaDMEkXb2LY[eAL0D62
+!s100 `aChg7lFfS8N3NWc0MEdi1
+R7
+32
+R33
+!i10b 1
+R34
+!s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/riscv_pkg.vhd|
+!s107 D:/Desktop/Code/unb/oac/PF-200030582/riscv_pkg.vhd|
+!i113 1
+R12
+R13
+Erom_rv
+Z49 w1702576284
+R15
+R2
+R3
+R4
+!i122 34
+R0
+Z50 8D:/Desktop/Code/unb/oac/PF-200030582/rom_rv.vhd
+Z51 FD:/Desktop/Code/unb/oac/PF-200030582/rom_rv.vhd
+l0
+L7 1
+Vo]XXMnemBha8ZFKAbR[`:1
+!s100 j8EboGm@>8O]B>Oc[P2cX0
+R7
+33
+R33
+!i10b 1
+R34
+Z52 !s90 -reportprogress|300|-work|riscv|-2008|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/rom_rv.vhd|
+Z53 !s107 D:/Desktop/Code/unb/oac/PF-200030582/rom_rv.vhd|
+!i113 1
+R48
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 6 rom_rv 0 22 o]XXMnemBha8ZFKAbR[`:1
+!i122 34
+l36
+L14 30
+V?1m?U=3ej@ZR`l[N;Sf1j1
+!s100 RCDC[bbeU_zLz=6V_BQaf0
+R7
+33
+R33
+!i10b 1
+R34
+R52
+R53
+!i113 1
+R48
+R13
+Erv_uniciclo
+Z54 w1702505822
+R15
+R2
+R3
+R4
+!i122 35
+R0
+Z55 8D:/Desktop/Code/unb/oac/PF-200030582/rv_uniciclo.vhd
+Z56 FD:/Desktop/Code/unb/oac/PF-200030582/rv_uniciclo.vhd
+l0
+L7 1
+V223MhQBN@PDF07z=mH3H;1
+!s100 5B;6iY<Fb67PZ1R5QYa?E3
+R7
+32
+Z57 !s110 1703010510
+!i10b 1
+R34
+Z58 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/rv_uniciclo.vhd|
+Z59 !s107 D:/Desktop/Code/unb/oac/PF-200030582/rv_uniciclo.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 11 rv_uniciclo 0 22 223MhQBN@PDF07z=mH3H;1
+!i122 35
+l75
+L13 110
+Vf4R2KXM4[Qnng9I]0@AMl3
+!s100 9hkJ@=YFMGSk=ba[LhmXa2
+R7
+32
+R57
+!i10b 1
+R34
+R58
+R59
+!i113 1
+R12
+R13
+Esomador
+Z60 w1702420627
+R15
+R2
+R3
+R4
+!i122 36
+R0
+Z61 8D:/Desktop/Code/unb/oac/PF-200030582/somador.vhd
+Z62 FD:/Desktop/Code/unb/oac/PF-200030582/somador.vhd
+l0
+L6 1
+VoIQHY:URFPR?A9h>QJZ_>0
+!s100 d9JZCJ@Fln;=9Djz?z8Bi2
+R7
+32
+R57
+!i10b 1
+Z63 !s108 1703010510.000000
+Z64 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/somador.vhd|
+Z65 !s107 D:/Desktop/Code/unb/oac/PF-200030582/somador.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 7 somador 0 22 oIQHY:URFPR?A9h>QJZ_>0
+!i122 36
+l14
+R37
+VLBN8jb874da5HTFRPaA^^1
+!s100 FoWIKPU7zi3D@AlRPa2hT2
+R7
+32
+R57
+!i10b 1
+R63
+R64
+R65
+!i113 1
+R12
+R13
+Eula_rv
+Z66 w1702420686
+R15
+R2
+R3
+R4
+!i122 37
+R0
+Z67 8D:/Desktop/Code/unb/oac/PF-200030582/ula_rv.vhd
+Z68 FD:/Desktop/Code/unb/oac/PF-200030582/ula_rv.vhd
+l0
+L7 1
+VTlaA8GCRSP38U2VDD]b8M3
+!s100 ePonPOo:iQL8KOPiDoM5^3
+R7
+32
+R57
+!i10b 1
+R63
+Z69 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/ula_rv.vhd|
+Z70 !s107 D:/Desktop/Code/unb/oac/PF-200030582/ula_rv.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 6 ula_rv 0 22 TlaA8GCRSP38U2VDD]b8M3
+!i122 37
+l19
+L16 66
+VA81FI6_]]6XMU]3o@SjQg2
+!s100 cUHOWJgbHGWI7a1G@1FnC0
+R7
+32
+R57
+!i10b 1
+R63
+R69
+R70
+!i113 1
+R12
+R13
+Exregs
+Z71 w1702420126
+R15
+R2
+R3
+R4
+!i122 38
+R0
+Z72 8D:/Desktop/Code/unb/oac/PF-200030582/XREGS.vhd
+Z73 FD:/Desktop/Code/unb/oac/PF-200030582/XREGS.vhd
+l0
+L6 1
+VgTn7kAI7bo8MQNcOR`?8^1
+!s100 ISSKNE`RU9I9Ud7boD<UU3
+R7
+32
+R57
+!i10b 1
+R63
+Z74 !s90 -reportprogress|300|-work|riscv|-2002|-explicit|-stats=none|D:/Desktop/Code/unb/oac/PF-200030582/XREGS.vhd|
+Z75 !s107 D:/Desktop/Code/unb/oac/PF-200030582/XREGS.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+Z76 DEx4 work 5 xregs 0 22 gTn7kAI7bo8MQNcOR`?8^1
+!i122 38
+l19
+Z77 L15 14
+Z78 VgehgnVkT]mAWG:=]f4WiB3
+Z79 !s100 ^ifY@KWRm7WYB:h6LaN6z0
+R7
+32
+R57
+!i10b 1
+R63
+R74
+R75
+!i113 1
+R12
+R13

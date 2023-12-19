@@ -19,7 +19,7 @@ architecture RTL of ram_rv is
   type ram_type is array (0 to (2**address'length-1)) of std_logic_vector(datain'range);
 
   impure function init_ram_hex return ram_type is
-    file text_file       : text open read_mode is "D:\Desktop\Code\unb\oac\PF-200030582\tests\tests_data.txt"; -- "tests_data.txt"
+    file text_file       : text open read_mode is "D:\Desktop\Programacao\Programas\unb\oac\PF-200030582\tests\tests_data.txt"; -- "tests_data.txt"
     variable text_line   : line;
     variable ram_content : ram_type;
 		

@@ -16,7 +16,7 @@ architecture RTL of rv_uniciclo is
 
   -- Program Counter (PC)
   signal pc_in  : std_logic_vector(WSIZE-1 downto 0);
-  signal pc_out : std_logic_vector(WSIZE-1 downto 0); -- aux_output_pc
+  signal pc_out : std_logic_vector(WSIZE-1 downto 0);
 
   -- Memória de Instruções (ROM)
   alias  rom_address : std_logic_vector(IMEM_ADDR-1 downto 0) is pc_out(9 downto 2);
@@ -91,7 +91,7 @@ begin
   
   mux_pc : mux_2 port map(escolhe_pc, soma_pc_4, soma_pc_imm, pc_somado);
   
-  mux_lui   : mux_2_5bits port map(is_lui, rs1, "00000", select_rs1_final);
+  mux_lui : mux_2_5bits port map(is_lui, rs1, "00000", select_rs1_final);
 
   bregs : XREGS port map(aux_clk, reg_write, select_rs1_final, rs2, rd, data, ro1, ro2);
   
@@ -111,7 +111,7 @@ begin
   mux_auipc : mux_2 port map(is_auipc, mux_ram_out, soma_pc_imm, mux_auipc_out);
   mux_jal   : mux_2 port map(is_jal, mux_auipc_out, soma_pc_4, data);
   mux_jalr  : mux_2 port map(is_jalr, pc_somado, saida_ula, pc_in);
-    
+
   process begin
     aux_clk <= '0';
     wait for 1 ns;
