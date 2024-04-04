@@ -23,5 +23,8 @@
 		"run.h": "c",
 		"cstdint": "cpp",
 		"stdlib.h": "c"
-	}
+	},
+	"cmake.sourceDirectory": "D:/Desktop/Code/unb",
+	"cmake.exportCompileCommandsFile": true,
+	"cmake.configureOnOpen": true
 }
