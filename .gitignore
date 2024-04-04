@@ -1,0 +1,12 @@
+# Ignorando executaveis
+*.exe
+
+# Ignorando arquivos comprimidos
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
