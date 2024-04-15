@@ -1,7 +1,7 @@
 # compilador
 CXX = g++ 
 # flags
-CXXFLAGS = -std=c++11 -Wall --enable=warning 
+CXXFLAGS = -std=c++11 -Wall 
 
 # diretório fonte
 SRC_DIR = src 
