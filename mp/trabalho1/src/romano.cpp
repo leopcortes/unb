@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char const *argv[]){
 
   if (argc < 2) {
-    cout << "Erro ao executar, utilização: " << argv[0] << " <string>" << endl;
+    cout << "Erro ao executar, utilização: " << argv[0] << " <string_do_numero_romano>" << endl;
     return -1;  
   }
 
