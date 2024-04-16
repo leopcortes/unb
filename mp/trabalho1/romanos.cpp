@@ -9,9 +9,9 @@ int romanos_para_decimal(char const * num_romano){
     {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}
   };
 
-  // Mapa para contar a repetição de cada algarismo
-  unordered_map<char, int> repeticoes;
-  bool v_repetido = false; // Verifica se 'V' foi repetido
+  
+  unordered_map<char, int> repeticoes; // Mapa para contar a repetição de cada algarismo
+  bool v_repetido = false;             // Variavel para verificar se 'V' foi repetido
   
   int num_decimal = 0;
   int tamanho = strlen(num_romano);
@@ -42,23 +42,22 @@ int romanos_para_decimal(char const * num_romano){
       return -1;
     }
 
-    // Verifica regra específica para o caractere 'V'
+    // Verifica se o caractere 'V' e repetido
     if (num_romano[i] == 'V') {
       if (v_repetido) {
-        return -1; // 'V' repetido
+        return -1;
       }
       v_repetido = true;
     }
 
-    // Verifica regra de precedência
-    if (i > 0 && valores[num_romano[i - 1]] < valor_atual) {
-      // Verifica se o caractere anterior é um 'V'
-      if (num_romano[i - 1] == 'V') {
-        return -1; // 'V' não pode preceder um caractere maior que ele
+    if (i > 0 && valores[num_romano[i-1]] < valor_atual) {
+      // 'V' nao pode preceder um caractere maior que ele
+      if (num_romano[i-1] == 'V') {
+        return -1; 
       }
-      // Verifica se o caractere anterior é um 'L' ou 'D' e o atual é 'V'
-      if ((num_romano[i - 1] == 'L' || num_romano[i - 1] == 'D') && num_romano[i] == 'V') {
-        return -1; // 'V' não pode seguir 'L' ou 'D'
+      // Verifica se o caractere anterior e um 'L' ou 'D' e o atual e 'V'
+      if ((num_romano[i-1] == 'L' || num_romano[i-1] == 'D') && num_romano[i] == 'V') {
+        return -1;
       }
     }
     

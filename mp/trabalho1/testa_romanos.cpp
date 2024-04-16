@@ -95,4 +95,20 @@ TEST_CASE( "Numeros romanos - algarismos invalidos - fora de alcance", "[romanos
     REQUIRE( romanos_para_decimal("MMMDCCCLXXXVIII") == -1 );
     REQUIRE( romanos_para_decimal("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII") == -1 );
 }
+
+TEST_CASE( "Numeros romanos - outros valores", "[romanos]" ) {
+    REQUIRE( romanos_para_decimal("XIV") == 14 );
+    REQUIRE( romanos_para_decimal("XXXVIII") == 38 );
+    REQUIRE( romanos_para_decimal("LVII") == 57 );
+    REQUIRE( romanos_para_decimal("CCXXIX") == 229 );
+    REQUIRE( romanos_para_decimal("CCCXCIV") == 394 );
+    REQUIRE( romanos_para_decimal("DCCXXI") == 721 );
+    REQUIRE( romanos_para_decimal("MXL") == 1040 );
+    REQUIRE( romanos_para_decimal("MCCCXXXIX") == 1339 );
+    REQUIRE( romanos_para_decimal("MCDXLVI") == 1446 );
+    REQUIRE( romanos_para_decimal("MDCCCLXXXIV") == 1884 );
+    REQUIRE( romanos_para_decimal("MMXXIV") == 2024 );
+    REQUIRE( romanos_para_decimal("MMCCCLXXXVII") == 2387 );
+    REQUIRE( romanos_para_decimal("MMCMXLVIII") == 2948 );
+}
  
