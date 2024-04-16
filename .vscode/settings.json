@@ -23,6 +23,7 @@
     "run.h": "c",
     "cstdint": "cpp",
     "stdlib.h": "c",
-    "random": "c"
+    "random": "c",
+    "regex": "cpp"
   }
 }
