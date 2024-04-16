@@ -1,18 +1,20 @@
+// Copyright 2024 - Leonardo P Cortes (200030582)
 #include "romanos.hpp"
 #include <iostream>
 #include <unordered_map>
 #include <cstring>
-using namespace std;
 
-int romanos_para_decimal(char const * num_romano){
-  unordered_map<char, int> valores = {
-    {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}
+int romanos_para_decimal(char const * num_romano) {
+  std::unordered_map<char, int> valores = {
+    {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50},
+    {'C', 100}, {'D', 500}, {'M', 1000}
   };
 
-  
-  unordered_map<char, int> repeticoes; // Mapa para contar a repetição de cada algarismo
-  bool v_repetido = false;             // Variavel para verificar se 'V' foi repetido
-  
+  // Mapa para contar a repetição de cada algarismo
+  std::unordered_map<char, int> repeticoes;
+  // Variavel para verificar se 'V' foi repetido
+  bool v_repetido = false;
+
   int num_decimal = 0;
   int tamanho = strlen(num_romano);
 
@@ -53,19 +55,22 @@ int romanos_para_decimal(char const * num_romano){
     if (i > 0 && valores[num_romano[i-1]] < valor_atual) {
       // 'V' nao pode preceder um caractere maior que ele
       if (num_romano[i-1] == 'V') {
-        return -1; 
+        return -1;
       }
       // Verifica se o caractere anterior e um 'L' ou 'D' e o atual e 'V'
-      if ((num_romano[i-1] == 'L' || num_romano[i-1] == 'D') && num_romano[i] == 'V') {
+      if ((num_romano[i-1] == 'L' ||
+          num_romano[i-1] == 'D') &&
+          num_romano[i] == 'V') {
         return -1;
       }
     }
-    
-    // Se não for o ultimo caractere e se o valor do caractere atual for menor que o valor do proximo caractere
+
+    // Se não for o ultimo caractere e se o valor do caractere
+    // atual for menor que o valor do proximo caractere
     if (i < tamanho-1 && valor_atual < valores[num_romano[i+1]]) {
-      num_decimal -= valor_atual; // Subtrai o valor atual do valor total
+      num_decimal -= valor_atual;  // Subtrai o valor atual do valor total
     } else {
-      num_decimal += valor_atual; // Soma o valor atual ao valor total
+      num_decimal += valor_atual;  // Soma o valor atual ao valor total
     }
   }
 

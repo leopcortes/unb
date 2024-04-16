@@ -10,3 +10,7 @@
 *.rar
 *.tar
 *.zip
+
+# MP
+*.gc*
+*.o
