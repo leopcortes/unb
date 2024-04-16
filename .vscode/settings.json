@@ -24,6 +24,7 @@
     "cstdint": "cpp",
     "stdlib.h": "c",
     "random": "c",
-    "regex": "cpp"
+    "regex": "cpp",
+    "cstring": "cpp"
   }
 }
