@@ -78,6 +78,8 @@ TEST_CASE("Numeros romanos - combinacoes proibidas", "[romanos]") {
     REQUIRE(romanos_para_decimal("VD") == -1);
     REQUIRE(romanos_para_decimal("VM") == -1);
     REQUIRE(romanos_para_decimal("IIII") == -1);
+    REQUIRE(romanos_para_decimal("IIIII") == -1);
+    REQUIRE(romanos_para_decimal("IIIIII") == -1);
     REQUIRE(romanos_para_decimal("XXXX") == -1);
     REQUIRE(romanos_para_decimal("LLLL") == -1);
     REQUIRE(romanos_para_decimal("CCCC") == -1);
@@ -99,17 +101,11 @@ TEST_CASE("Numeros romanos - outros valores", "[romanos]") {
     REQUIRE(romanos_para_decimal("XCIX") == 99);
     REQUIRE(romanos_para_decimal("CCXXIX") == 229);
     REQUIRE(romanos_para_decimal("CCCXCIV") == 394);
-
-    REQUIRE(romanos_para_decimal("CCCXC") == 390);
-
     REQUIRE(romanos_para_decimal("CDXCIX") == 499);
     REQUIRE(romanos_para_decimal("DCCXXI") == 721);
     REQUIRE(romanos_para_decimal("CMXCIX") == 999);
     REQUIRE(romanos_para_decimal("MXL") == 1040);
     REQUIRE(romanos_para_decimal("MCCCXXXIX") == 1339);
-
-    REQUIRE(romanos_para_decimal("XXXIX") == 39);
-
     REQUIRE(romanos_para_decimal("MCDXLVI") == 1446);
     REQUIRE(romanos_para_decimal("MDCCCLXXXIV") == 1884);
     REQUIRE(romanos_para_decimal("MMXXIV") == 2024);

@@ -25,23 +25,18 @@ int romanos_para_decimal(char const * num_romano) {
 
   // Percorre cada caractere do numero romano
   for (int i = 0; i < tamanho; ++i) {
-    // Verifica se o caractere e um caractere valido
+    // Verifica se o caractere e um caractere valido (I, V, X, L, C, D, M)
     if (valores.find(num_romano[i]) == valores.end()) {
       return -1;
     }
 
-    int valor_atual = valores[num_romano[i]];
-
-    // Conta as repeticoes do algarismo
-    if (repeticoes.find(num_romano[i]) == repeticoes.end()) {
-      repeticoes[num_romano[i]] = 1;
-    } else {
-      repeticoes[num_romano[i]]++;
-    }
-
-    // Verifica se o algarismo atual se repete mais de 3 vezes
-    if (repeticoes[num_romano[i]] > 3) {
-      return -1;
+    // Conta as repeticoes do caractere
+    if (i+2 < tamanho-1){
+      if (num_romano[i] == num_romano[i+1] &&
+          num_romano[i] == num_romano[i+2] &&
+          num_romano[i] == num_romano[i+3]) {
+        return -1;
+      }
     }
 
     // Verifica se o caractere 'V' e repetido
@@ -51,6 +46,8 @@ int romanos_para_decimal(char const * num_romano) {
       }
       v_repetido = true;
     }
+
+    int valor_atual = valores[num_romano[i]];
 
     if (i > 0 && valores[num_romano[i-1]] < valor_atual) {
       // 'V' nao pode preceder um caractere maior que ele
