@@ -5,6 +5,7 @@
 #include <cstring>
 
 int romanos_para_decimal(char const * num_romano) {
+  // Mapa para definir os valores em decimal associados aos romanos
   std::unordered_map<char, int> valores = {
     {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50},
     {'C', 100}, {'D', 500}, {'M', 1000}
@@ -15,6 +16,7 @@ int romanos_para_decimal(char const * num_romano) {
   // Variavel para verificar se 'V' foi repetido
   bool v_repetido = false;
 
+  // Variaveis auxiliares
   int num_decimal = 0;
   int tamanho = strlen(num_romano);
 
@@ -30,7 +32,7 @@ int romanos_para_decimal(char const * num_romano) {
       return -1;
     }
 
-    // Conta as repeticoes do caractere
+    // Verifica se o caractere se repete mais de 3 vezes seguidas
     if (i+2 < tamanho-1){
       if (num_romano[i] == num_romano[i+1] &&
           num_romano[i] == num_romano[i+2] &&
@@ -49,6 +51,8 @@ int romanos_para_decimal(char const * num_romano) {
 
     int valor_atual = valores[num_romano[i]];
 
+    // Se nao for o primeiro caractere e se o 
+    // caractere anterior e menor que o caractere atual
     if (i > 0 && valores[num_romano[i-1]] < valor_atual) {
       // 'V' nao pode preceder um caractere maior que ele
       if (num_romano[i-1] == 'V') {
@@ -71,7 +75,7 @@ int romanos_para_decimal(char const * num_romano) {
     }
   }
 
-  // Verifica se o numero resultante é maior que 3000
+  // Verifica se o numero resultante e maior que 3000
   if (num_decimal > 3000) {
     return -1;
   }
