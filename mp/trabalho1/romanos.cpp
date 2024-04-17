@@ -33,7 +33,7 @@ int romanos_para_decimal(char const * num_romano) {
     }
 
     // Verifica se o caractere se repete mais de 3 vezes seguidas
-    if (i+2 < tamanho-1){
+    if (i+2 < tamanho-1) {
       if (num_romano[i] == num_romano[i+1] &&
           num_romano[i] == num_romano[i+2] &&
           num_romano[i] == num_romano[i+3]) {
@@ -51,7 +51,7 @@ int romanos_para_decimal(char const * num_romano) {
 
     int valor_atual = valores[num_romano[i]];
 
-    // Se nao for o primeiro caractere e se o 
+    // Se nao for o primeiro caractere e se o
     // caractere anterior e menor que o caractere atual
     if (i > 0 && valores[num_romano[i-1]] < valor_atual) {
       // 'V' nao pode preceder um caractere maior que ele
