@@ -4,10 +4,10 @@ Para compilar o programa basta estar no diretório pai (.) e rodar o comando `ma
 
 ### Como o projeto foi analisado:
 
-- Os arquivos fonte foram analisados pelo _cpplint_ para estilização utilizando o comando: `make cpplint`.
+- Os arquivos fonte foram checados pelos analisadores estático (_cppcheck_) e dinâmico (_valgrind_) para procurar erros utlizando os comandos: `make cppcheck` e `make valgrind`.
 
-- Também foram checados pelos analisadores estático (_cppcheck_) e dinâmico (_valgrind_) para procurar erros utlizando os comandos: `make cppcheck` e `make valgrind`.
+- Depois foram analisados pelo _cpplint_ para estilização utilizando o comando: `make cpplint`.
 
-- A cobertura dos testes foi analisada com o comando: `make gcov`.
+- Após isso, o programa foi debugado utilizando o comando: `make debug`.
 
-- Por fim o programa foi debugado utilizando o comando: `make debug`.
+- E por fim, a cobertura dos testes foi analisada com o comando: `make gcov`.
