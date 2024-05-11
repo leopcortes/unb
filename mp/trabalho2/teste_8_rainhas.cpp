@@ -4,6 +4,6 @@
 #include "catch.hpp"
 #include "8_rainhas.hpp"
 
-TEST_CASE("", "[8_rainhas]") {
-  
+TEST_CASE("teste 1", "[rainhas]") {
+  REQUIRE(teste_8_rainhas("teste_8_rainhas.txt") == 0);
 }
