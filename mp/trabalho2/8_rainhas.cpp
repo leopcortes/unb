@@ -4,153 +4,100 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <cstdio>
-#include <algorithm>
-using namespace std;
-using std::vector;
 
-int teste_8_rainhas(const string& filename) {
-  // int valorRetorno = 0;
+int teste_8_rainhas(const std::string& filename) {
+  // Abertura do arquivo_entrada de entrada
+  std::ifstream arquivo_entrada(filename);
 
-  // // Abertura do arquivo
-  // string linha; 
-  // ifstream arquivo_entrada("teste_8_rainhas.txt"); 
-  // if (!arquivo_entrada) {
-  //   valorRetorno = -1;
-  // } 
+  // Teste se o arquivo foi aberto corretamente
+  if (!arquivo_entrada) {
+    return -1;
+  }
 
-  // string linhas[8];
+  std::string linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8;
+  std::string linhaExtra;
 
-  // // Atribuicao das linhas do arquivo a uma matriz
-  // for(int i=0; i<8; i++){
-  //   getline(arquivo_entrada, linhas[i]);
-  // }
-
-  // arquivo_entrada.close();
-  
-  // // Verificacao linhas
-  // for(int i=0; i<8; i++){
-  //   int contRainhas = 0;
-  //   string linha = linhas[i];
-  //   for(int j=0; j<linha.size(); j++){
-  //     if(linha[j] == '1'){
-  //       contRainhas++;
-  //     }
-  //   }
-  //   if(contRainhas > 1){
-  //     valorRetorno = -3;
-  //   }
-  //   if(contRainhas < 1){
-  //     valorRetorno = -4;
-  //   }
-  // }
-
-  // // Verificacao colunas
-  // for (int col = 0; col < 8; col++) {
-  //   int contRainhas = 0;
-  //   for (int row = 0; row < 8; row++) {
-  //     if (linhas[row][col] == '1') {
-  //       contRainhas++;
-  //     }
-  //   }
-  //   if (contRainhas > 1) {
-  //     valorRetorno = -5;
-  //   }
-  //   if (contRainhas < 1) {
-  //     valorRetorno = -6;
-  //   }
-  // }
-
-  // // Impressao da posicao das rainhas que se atacam
-  // if (valorRetorno == 0) {
-  //   string ataques = "1,3";
-
-  //   ofstream arquivo_saida("ataques.txt", ios::out);
-  //   if (arquivo_saida.is_open()) {
-  //     arquivo_saida << ataques;
-  //     arquivo_saida.close();
-  //   } else {
-  //     return -2;
-  //   }
-  // }
-
-  // return valorRetorno;
-
-  ifstream arquivo(filename);
-
-  string linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8;
-  string linhaExtra;
-
-  if (getline(arquivo, linha1) &&
-    getline(arquivo, linha2) &&
-    getline(arquivo, linha3) &&
-    getline(arquivo, linha4) &&
-    getline(arquivo, linha5) &&
-    getline(arquivo, linha6) &&
-    getline(arquivo, linha7) &&
-    getline(arquivo, linha8) &&
-    !getline(arquivo, linhaExtra)) {
+  // Leitura das linhas do arquivo
+  if (getline(arquivo_entrada, linha1) &&
+      getline(arquivo_entrada, linha2) &&
+      getline(arquivo_entrada, linha3) &&
+      getline(arquivo_entrada, linha4) &&
+      getline(arquivo_entrada, linha5) &&
+      getline(arquivo_entrada, linha6) &&
+      getline(arquivo_entrada, linha7) &&
+      getline(arquivo_entrada, linha8) &&
+      !getline(arquivo_entrada, linhaExtra)) {
   } else {
     return -1;
   }
 
-  arquivo.close();
+  // Fechamento do arquivo_entrada de entrada
+  arquivo_entrada.close();
 
   int valorRetorno = 1;
-  int arrayLine1[8];
-  int arrayLine2[8];
-  int arrayLine3[8];
-  int arrayLine4[8];
-  int arrayLine5[8];
-  int arrayLine6[8];
-  int arrayLine7[8];
-  int arrayLine8[8];
+  int arrayLinha1[8];
+  int arrayLinha2[8];
+  int arrayLinha3[8];
+  int arrayLinha4[8];
+  int arrayLinha5[8];
+  int arrayLinha6[8];
+  int arrayLinha7[8];
+  int arrayLinha8[8];
 
-  // Extrai os 8 primeiros caracteres da string e os converte para inteiros
-  int countLine = 0;
-  int countTotal = 0;
-  int* arrays[] = { arrayLine1, arrayLine2, arrayLine3, arrayLine4, arrayLine5, arrayLine6, arrayLine7, arrayLine8};
+  // Converte os 8 primeiros caracteres da string para inteiros
+  int contLinha = 0;
+  int contTotal = 0;
+  int* arrays[] = { arrayLinha1, arrayLinha2, arrayLinha3, arrayLinha4,
+                    arrayLinha5, arrayLinha6, arrayLinha7, arrayLinha8};
 
-  vector<string> linhas = { linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8};
+  std::vector<std::string> linhas = { linha1, linha2, linha3, linha4,
+                            linha5, linha6, linha7, linha8};
 
-  int attackSameLine[8] = {10, 10, 10, 10, 10, 10, 10, 10};
+  int ataqueMesmaLinha[8] = {10, 10, 10, 10, 10, 10, 10, 10};
 
-  string ataques = "";  //  Armazena ataques
+  // String para armanzenar os ataques
+  std::string ataques = "";
 
-  for (int i = 0; i < 8; i++) {
+  for (int i=0; i < 8; i++) {
     // Colocando lista em array de inteiros
-    countLine = 0;
-    for (int y = 0; y < 8; y++) {attackSameLine[y] = 10;}
+    contLinha = 0;
+    for (int y=0; y < 8; y++) {
+      ataqueMesmaLinha[y] = 10;
+    }
 
-    for (int j = 0; j < 8; j++) {
+    for (int j=0; j < 8; j++) {
       if (linhas[i][j] - '0' == 1 || linhas[i][j] - '0' == 0) {
         arrays[i][j] = linhas[i][j] - '0';
         if (arrays[i][j] == 1) {
-          countLine += 1;
-          countTotal += 1;
+          contLinha += 1;
+          contTotal += 1;
         }
-      } else { return -1;}  //  caracter diferente de 1 e 0
+      } else {
+        // Caractere diferente de 1 e 0
+        return -1;
+      }
     }
 
-    // Verificação ataque mesma linha
-    if (countLine >=  2) {
-      for (int x = 0; x < 8; x++) {
-        if (arrays[i][x] == 1) {
-          for (int a = 0; a < 8; a++) {
-            if (attackSameLine[a] == 10) {
-              attackSameLine[a] = x;
+
+    // Verificacao de mais de uma rainha na mesma linha
+    if (contLinha >=  2) {
+      for (int k=0; k < 8; k++) {
+        if (arrays[i][k] == 1) {
+          for (int a=0; a < 8; a++) {
+            if (ataqueMesmaLinha[a] == 10) {
+              ataqueMesmaLinha[a] = k;
               break;
             }
           }
         }
       }
-      for (int b = 0; b < 7; b++) {
-        if (attackSameLine[b] != 10 && attackSameLine[b+1] != 10) {
-          ataques += to_string(i + 1); ataques += ",";
-          ataques += to_string(attackSameLine[b] + 1);
+      for (int b=0; b < 7; b++) {
+        if (ataqueMesmaLinha[b] != 10 && ataqueMesmaLinha[b+1] != 10) {
+          ataques += std::to_string(i+1); ataques += ",";
+          ataques += std::to_string(ataqueMesmaLinha[b] + 1);
           ataques += "            ";
-          ataques += to_string(i + 1); ataques += ",";
-          ataques += to_string(attackSameLine[b+1] + 1);
+          ataques += std::to_string(i+1); ataques += ",";
+          ataques += std::to_string(ataqueMesmaLinha[b+1] + 1);
           ataques += "\n";
           valorRetorno = 0;
         }
@@ -158,24 +105,24 @@ int teste_8_rainhas(const string& filename) {
     }
   }
 
-  if (countTotal > 8 || countTotal < 8) {  //  mais ou menos de 8 rainhas
+  if (contTotal > 8 || contTotal < 8) {
     return -1;
   }
 
-  // Verificacao colunas
+  // Verificacao de mais de uma rainha na mesma coluna
   bool shouldBreak = false;
-  for (int i = 0; i < 8; i++) {
-    for (int j = 0; j < 8; j++) {
+  for (int i=0; i < 8; i++) {
+    for (int j=0; j < 8; j++) {
       if (arrays[i][j] == 1) {
         shouldBreak =  false;
-        for (int y = i; y < 8; y++) {
-          for (int x = j; x < 8; x++) {
-            if (arrays[y][x] == 1 && i != y && x == j) {
-              ataques += to_string(i + 1); ataques += ",";
-              ataques += to_string(j + 1);
+        for (int k=i; k < 8; k++) {
+          for (int l=j; l < 8; l++) {
+            if (arrays[k][l] == 1 && i != k && l == j) {
+              ataques += std::to_string(i+1); ataques += ",";
+              ataques += std::to_string(j+1);
               ataques += "            ";
-              ataques += to_string(y + 1); ataques += ",";
-              ataques += to_string(x + 1); ataques += "\n";
+              ataques += std::to_string(k+1); ataques += ",";
+              ataques += std::to_string(l+1); ataques += "\n";
 
               valorRetorno = 0;
               shouldBreak = true;
@@ -188,22 +135,22 @@ int teste_8_rainhas(const string& filename) {
     }
   }
 
-  // Verificacao diagonais direita
+  // Verificacao de mais de uma rainha nas diagonais para direita
   int cont = 0;
-  for (int i = 0; i < 8; i++) {
-    for (int j = 0; j < 8; j++) {
+  for (int i=0; i < 8; i++) {
+    for (int j=0; j < 8; j++) {
       if (arrays[i][j] == 1) {
         cont = 1;
-        for (int y = i + 1; y < 8; y++) {
+        for (int k=i+1; k < 8; k++) {
           if (j+cont >= 8) {
           break;
           }
-          if (arrays[y][j+cont] == 1) {
-            ataques += to_string(i + 1); ataques += ",";
-            ataques += to_string(j + 1);
+          if (arrays[k][j+cont] == 1) {
+            ataques += std::to_string(i+1); ataques += ",";
+            ataques += std::to_string(j+1);
             ataques += "            ";
-            ataques += to_string(y + 1); ataques += ",";
-            ataques += to_string(j+cont + 1); ataques += "\n";
+            ataques += std::to_string(k+1); ataques += ",";
+            ataques += std::to_string(j+cont+1); ataques += "\n";
             valorRetorno = 0;
             break;
           }
@@ -213,22 +160,22 @@ int teste_8_rainhas(const string& filename) {
     }
   }
 
-  // Verificacao diagonais esquerda
+  // Verificacao de mais de uma rainha nas diagonais para esquerda
   cont = 0;
-  for (int i = 0; i < 8; i++) {
-    for (int j = 0; j < 8; j++) {
+  for (int i=0; i < 8; i++) {
+    for (int j=0; j < 8; j++) {
       if (arrays[i][j] == 1) {
         cont = 1;
-        for (int y = i + 1; y < 8; y++) {
-          if (j-cont < 0) {
+        for (int k=i+1; k < 8; k++) {
+          if (j-cont  <  0) {
             break;
           }
-          if (arrays[y][j-cont] == 1) {
-            ataques += to_string(i + 1); ataques += ",";
-            ataques += to_string(j + 1);
+          if (arrays[k][j-cont] == 1) {
+            ataques += std::to_string(i+1); ataques += ",";
+            ataques += std::to_string(j+1);
             ataques += "            ";
-            ataques += to_string(y + 1); ataques += ",";
-            ataques += to_string(j-cont + 1); ataques += "\n";
+            ataques += std::to_string(k+1); ataques += ",";
+            ataques += std::to_string(j-cont+1); ataques += "\n";
             valorRetorno = 0;
             break;
           }
@@ -240,12 +187,12 @@ int teste_8_rainhas(const string& filename) {
 
   // Impressao da posicao das rainhas que se atacam
   if (valorRetorno == 0) {
-    ofstream arquivo_saida("ataques.txt", ios::out);
+    std::ofstream arquivo_saida("ataques.txt", std::ios::out);
     if (arquivo_saida.is_open()) {
       arquivo_saida << ataques;
       arquivo_saida.close();
     } else {
-      return -2;
+      return -1;
     }
   }
 
