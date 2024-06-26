@@ -1,0 +1,13 @@
+.git/
+.vscode/
+
+html/
+latex/
+
+*.o
+# *.java
+# *.class
+*.out
+*.rpt
+
+main
