@@ -1,7 +1,8 @@
-# Ignorando executaveis
+# Xxecutaveis
 *.exe
+main
 
-# Ignorando arquivos comprimidos
+# Arquivos comprimidos
 *.7z
 *.dmg
 *.gz
@@ -17,5 +18,3 @@
 
 # SSTD
 .ipymb_checkpoints/**
-
-main
