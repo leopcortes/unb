@@ -2,36 +2,29 @@
 
 void Transmissor(const string &msgTransmitida, int modulacaoFisica)
 {
-  vector<int> msgAscii;
   // Impressao do codigo ASCII de cada caractere
   cout << endl
        << "ASCII:" << endl;
 
   // Conversao de Char para ASCII
-  for (unsigned i = 0; i < msgTransmitida.size(); i++)
+  vector<int> msgAscii;
+  for (char ch : msgTransmitida) // Loop for-each para iterar caracteres da string
   {
-    vector<int> tempDataCharAscii;
-    int charBi = int(msgTransmitida.at(i));
+    int charAscii = static_cast<int>(ch); // Converte o caractere em seu valor inteiro ASCII
+    vector<int> tempDataCharAscii(8);     // Vetor para armazenar os 8 bits binarios do caractere
 
-    for (unsigned j = 0; j < 8; j++)
+    for (int j = 0; j < 8; j++) // Loop para processar cada bit do valor ASCII do caractere
     {
-      if (charBi % 2 == 0)
-      {
-        tempDataCharAscii.push_back(0);
-      }
-      else
-      {
-        tempDataCharAscii.push_back(1);
-      }
-      charBi = charBi >> 1;
+      tempDataCharAscii[7 - j] = charAscii % 2; // Calcula o bit menos significativo do valor atual de 'charAscii' e o armazena na posicao correta (7-j faz ser do bit mais significativo para o menos significativo)
+      charAscii >>= 1;                          // Desloca os bits uma posicao para a direita preparando para a próxima iteracao do loop
     }
 
-    cout << msgTransmitida.at(i) << " - ";
-
-    for (int k = 8 - 1; k >= 0; k--)
+    // Impressao do valor ASCII do caractere a armazenamento no vetor msgAscii
+    cout << ch << " - ";
+    for (int bit : tempDataCharAscii)
     {
-      msgAscii.push_back(tempDataCharAscii.at(k));
-      cout << tempDataCharAscii.at(k);
+      msgAscii.push_back(bit);
+      cout << bit;
     }
     cout << endl;
   }
@@ -48,6 +41,15 @@ void Transmissor(const string &msgTransmitida, int modulacaoFisica)
     break;
   case COD_BIPOLAR:
     msgCodificada = CodificacaoBipolar(msgAscii);
+    break;
+  case COD_ASK:
+    msgCodificada = CodificacaoASK(msgAscii);
+    break;
+  case COD_FSK:
+    msgCodificada = CodificacaoFSK(msgAscii);
+    break;
+  case COD_8QAM:
+    msgCodificada = Codificacao8QAM(msgAscii);
     break;
   default:
     cout << "Erro na seleção de modulação!" << endl;
@@ -155,6 +157,21 @@ vector<int> CodificacaoBipolar(vector<int> mensagem)
   return mensagem; // Mensagem codificada
 }
 
+vector<int> CodificacaoASK(vector<int> mensagem)
+{
+  // Codificacao Amplitude Shift Keying
+}
+
+vector<int> CodificacaoFSK(vector<int> mensagem)
+{
+  // Codificacao Frequency Shift Keying
+}
+
+vector<int> Codificacao8QAM(vector<int> mensagem)
+{
+  // Codificacao 8-Quadrature Amplitude Modulation
+}
+
 void Receptor(const vector<int> &msgCodificada, int modulacaoFisica)
 {
   // Chamada da funcao de decodificacao escolhida pelo usuario
@@ -170,24 +187,36 @@ void Receptor(const vector<int> &msgCodificada, int modulacaoFisica)
   case COD_BIPOLAR:
     msgDecodificada = DecodificacaoBipolar(msgCodificada);
     break;
+  case COD_FSK:
+    msgDecodificada = DecodificacaoASK(msgCodificada);
+    break;
+  case COD_ASK:
+    msgDecodificada = DecodificacaoFSK(msgCodificada);
+    break;
+  case COD_8QAM:
+    msgDecodificada = Decodificacao8QAM(msgCodificada);
+    break;
   }
 
   // Conversao de volta de ASCII para Char
-  string msgRecebida = "";
-  int intChar = 0;
+  string msgRecebida;
+  int currCharValue = 0;
 
-  for (unsigned i = 0; i < msgDecodificada.size(); i++)
+  for (unsigned i = 0; i < msgDecodificada.size(); ++i) // Percorre cada bit da mensagem decodificada
   {
-    if (i != 0 && i % 8 == 0)
+    currCharValue = (currCharValue << 1) | msgDecodificada[i]; // Desloca o caractere para a esquerda e adiciona o bit atual usando o operador OR
+    if ((i + 1) % 8 == 0)                                      // Se 8 bits foram processados
     {
-      msgRecebida.append(1, char(intChar));
-      intChar = 0;
+      msgRecebida.push_back(static_cast<char>(currCharValue)); // Converte o valor ASCII para seu caractere e concatena na string
+      currCharValue = 0;                                       // Reinicializa variavel auxiliar
     }
-    intChar = intChar << 1;
-    intChar += msgDecodificada.at(i);
   }
 
-  msgRecebida.append(1, char(intChar));
+  // Adiciona o ultimo caractere reconstruido a string se o tamanho do vetor for um multiplo de 8
+  if (msgDecodificada.size() % 8 == 0)
+  {
+    msgRecebida.push_back(static_cast<char>(currCharValue));
+  }
 
   // Impressao da mensagem recebida (msgTransmitida -> codificacao -> decodificacao -> msgRecebida)
   cout << endl
@@ -236,4 +265,19 @@ vector<int> DecodificacaoBipolar(vector<int> mensagem)
   }
 
   return mensagem; // Mensagem decodificada
+}
+
+vector<int> DecodificacaoASK(vector<int> mensagem)
+{
+  // Decodificacao Amplitude Shift Keying
+}
+
+vector<int> DecodificacaoFSK(vector<int> mensagem)
+{
+  // Decodificacao Frequency Shift Keying
+}
+
+vector<int> Decodificacao8QAM(vector<int> mensagem)
+{
+  // Decodificacao 8-Quadrature Amplitude Modulation
 }
