@@ -1,6 +1,7 @@
-# Xxecutaveis
+# Executaveis
 *.exe
 main
+simulador
 
 # Arquivos comprimidos
 *.7z
@@ -18,3 +19,6 @@ main
 
 # SSTD
 .ipymb_checkpoints/**
+
+# TR1
+*.d

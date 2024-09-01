@@ -1,4 +1,4 @@
-#include "CamadaFisica.hpp"
+#include "../include/CamadaFisica.hpp"
 
 void Transmissor(const string &msgTransmitida, int modulacaoFisica)
 {
@@ -41,15 +41,6 @@ void Transmissor(const string &msgTransmitida, int modulacaoFisica)
     break;
   case COD_BIPOLAR:
     msgCodificada = CodificacaoBipolar(msgAscii);
-    break;
-  case COD_ASK:
-    msgCodificada = CodificacaoASK(msgAscii);
-    break;
-  case COD_FSK:
-    msgCodificada = CodificacaoFSK(msgAscii);
-    break;
-  case COD_8QAM:
-    msgCodificada = Codificacao8QAM(msgAscii);
     break;
   default:
     cout << "Erro na seleção de modulação!" << endl;
@@ -157,21 +148,6 @@ vector<int> CodificacaoBipolar(vector<int> mensagem)
   return mensagem; // Mensagem codificada
 }
 
-vector<int> CodificacaoASK(vector<int> mensagem)
-{
-  // Codificacao Amplitude Shift Keying
-}
-
-vector<int> CodificacaoFSK(vector<int> mensagem)
-{
-  // Codificacao Frequency Shift Keying
-}
-
-vector<int> Codificacao8QAM(vector<int> mensagem)
-{
-  // Codificacao 8-Quadrature Amplitude Modulation
-}
-
 void Receptor(const vector<int> &msgCodificada, int modulacaoFisica)
 {
   // Chamada da funcao de decodificacao escolhida pelo usuario
@@ -186,15 +162,6 @@ void Receptor(const vector<int> &msgCodificada, int modulacaoFisica)
     break;
   case COD_BIPOLAR:
     msgDecodificada = DecodificacaoBipolar(msgCodificada);
-    break;
-  case COD_FSK:
-    msgDecodificada = DecodificacaoASK(msgCodificada);
-    break;
-  case COD_ASK:
-    msgDecodificada = DecodificacaoFSK(msgCodificada);
-    break;
-  case COD_8QAM:
-    msgDecodificada = Decodificacao8QAM(msgCodificada);
     break;
   }
 
@@ -265,19 +232,4 @@ vector<int> DecodificacaoBipolar(vector<int> mensagem)
   }
 
   return mensagem; // Mensagem decodificada
-}
-
-vector<int> DecodificacaoASK(vector<int> mensagem)
-{
-  // Decodificacao Amplitude Shift Keying
-}
-
-vector<int> DecodificacaoFSK(vector<int> mensagem)
-{
-  // Decodificacao Frequency Shift Keying
-}
-
-vector<int> Decodificacao8QAM(vector<int> mensagem)
-{
-  // Decodificacao 8-Quadrature Amplitude Modulation
 }

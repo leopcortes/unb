@@ -1,4 +1,4 @@
-#include "CamadaFisica.hpp"
+#include "../include/CamadaFisica.hpp"
 
 int main()
 {
@@ -13,9 +13,6 @@ int main()
        << COD_NRZPOLAR << " - NRZ-Polar" << endl
        << COD_MANCHESTER << " - Manchester" << endl
        << COD_BIPOLAR << " - Bipolar" << endl
-       << COD_ASK << " - Amplitude Shift Keying" << endl
-       << COD_FSK << " - Frequency Shift Keying" << endl
-       << COD_8QAM << " - 8-Quadrature Amplitude Modulation" << endl
        << "Escolha uma forma de modulação digital: ";
   cin >> modulacaoFisica;
 
