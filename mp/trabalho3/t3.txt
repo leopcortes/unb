@@ -1,0 +1,185 @@
+1. Função: Cadastrar Usuário
+/***************************************************************************
+Função: Cadastrar Usuário
+Descrição
+Permite que o usuário se cadastre no sistema, fornecendo suas informações
+como nome, e-mail, senha e endereço.
+Parâmetros
+nome - nome completo do usuário.
+email - endereço de e-mail válido.
+senha - senha para acessar o sistema.
+endereço - localização ou endereço do usuário.
+Valor retornado
+Retorna um ID único de usuário para uso posterior no sistema.
+Assertiva de entrada
+nome != NULL
+email != NULL && formatoVálido( email )
+senha != NULL && comprimento( senha ) >= 8
+endereço != NULL
+Assertiva de saída
+idUsuario > 0 
+***************************************************************************/ 
+int CadastrarUsuario( char *nome, char *email, char *senha, char *endereco );
+
+2. Função: Iniciar Doação
+/***************************************************************************
+Função: Iniciar Doação
+Descrição
+Inicia uma nova doação para o usuário, permitindo que ele insira informações
+sobre os itens a serem doados e o destino da doação.
+Parâmetros
+idUsuario - ID do usuário que está fazendo a doação.
+itensDoacao - lista de itens a serem doados.
+destino - endereço ou localização para onde a doação será enviada.
+Valor retornado
+Retorna um ID de doação para rastreamento posterior.
+Assertiva de entrada
+idUsuario > 0
+itensDoacao != NULL
+destino != NULL
+Assertiva de saída
+idDoacao > 0 
+***************************************************************************/ 
+int IniciarDoacao( int idUsuario, char *itensDoacao, char *destino );
+
+3. Função: Gerar QRCode
+/***************************************************************************
+Função: Gerar QRCode
+Descrição
+Gera um QRCode contendo as informações da doação, como ID da doação e
+destino. Esse código será colado no pacote de doações.
+Parâmetros
+idDoacao - ID da doação que será rastreada pelo QRCode.
+destino - destino da doação.
+Valor retornado
+Retorna uma string com o QRCode gerado.
+Assertiva de entrada
+idDoacao > 0
+destino != NULL
+Assertiva de saída
+QRCode != NULL 
+***************************************************************************/
+char GerarQRCode( int idDoacao, char *destino );
+
+4. Função: Registrar Localização
+/***************************************************************************
+Função: Registrar Localização
+Descrição
+Atualiza a localização atual do pacote de doação no sistema por meio do QRCode.
+Parâmetros
+idDoacao - ID da doação.
+localizacaoAtual - coordenadas GPS ou endereço atual do pacote.
+Valor retornado
+Nenhum.
+Assertiva de entrada
+idDoacao > 0
+localizacaoAtual != NULL
+Assertiva de saída
+localização registrada corretamente no banco de dados. 
+***************************************************************************/
+void RegistrarLocalizacao( int idDoacao, char *localizacaoAtual );
+
+5. Função: Ler QRCode
+/***************************************************************************
+Função: Ler QRCode
+Descrição
+Lê o QRCode do pacote para verificar e atualizar as informações da doação.
+Parâmetros
+QRCode - código QR que identifica o pacote de doação.
+Valor retornado
+Retorna o ID da doação associado ao QRCode.
+Assertiva de entrada
+QRCode != NULL
+Assertiva de saída
+idDoacao > 0 
+***************************************************************************/ 
+int LerQRCode( char *QRCode );
+
+6. Função: Finalizar Doação
+/***************************************************************************
+Função: Finalizar Doação
+Descrição
+Marca a doação como entregue e permite o upload de fotos ou vídeos como
+comprovação.
+Parâmetros
+idDoacao - ID da doação.
+comprovacao - fotos e vídeos como evidência da entrega.
+Valor retornado
+Nenhum.
+Assertiva de entrada
+idDoacao > 0
+comprovacao != NULL
+Assertiva de saída
+doação finalizada e comprovada no sistema. 
+***************************************************************************/ 
+void FinalizarDoacao( int idDoacao, char *comprovacao );
+
+7. Função: Consultar Status da Doação
+/***************************************************************************
+Função: Consultar Status da Doação
+Descrição
+Permite que o usuário consulte o status atual da sua doação.
+Parâmetros
+idUsuario - ID do usuário.
+idDoacao - ID da doação.
+Valor retornado
+Retorna o status atual da doação.
+Assertiva de entrada
+idUsuario > 0
+idDoacao > 0
+Assertiva de saída
+statusDoacao != NULL 
+***************************************************************************/ 
+char ConsultarStatusDoacao( int idUsuario, int idDoacao );
+
+8. Função: Gerar Relatório de Doações
+/***************************************************************************
+Função: Gerar Relatório de Doações
+Descrição
+Gera um relatório com estatísticas sobre todas as doações feitas e recebidas.
+Parâmetros
+tipoRelatorio - define o tipo de relatório (total de doações, doações recebidas, etc.).
+Valor retornado
+Retorna o relatório gerado em formato de texto ou gráfico.
+Assertiva de entrada
+tipoRelatorio != NULL
+Assertiva de saída
+relatorioGerado != NULL 
+***************************************************************************/ 
+char GerarRelatorioDoacoes( char *tipoRelatorio );
+
+9. Função: Atualizar Informações do Usuário
+/***************************************************************************
+Função: Atualizar Informações do Usuário
+Descrição
+Atualiza os dados cadastrais do usuário, como endereço e e-mail.
+Parâmetros
+idUsuario - ID do usuário.
+novosDados - novos dados a serem atualizados (e-mail, endereço, etc.).
+Valor retornado
+Nenhum.
+Assertiva de entrada
+idUsuario > 0
+novosDados != NULL
+Assertiva de saída
+dadosAtualizados == true 
+***************************************************************************/ 
+void AtualizarInformacoesUsuario( int idUsuario, char *novosDados );
+
+10. Função: Validar Login do Usuário
+/***************************************************************************
+Função: Validar Login do Usuário
+Descrição
+Valida as credenciais de login do usuário.
+Parâmetros
+email - endereço de e-mail do usuário.
+senha - senha do usuário.
+Valor retornado
+Retorna true se as credenciais forem válidas, false caso contrário.
+Assertiva de entrada
+email != NULL && formatoVálido( email )
+senha != NULL && comprimento( senha ) >= 8
+Assertiva de saída
+loginValido == true || loginValido == false 
+***************************************************************************/ 
+bool ValidarLogin( char *email, char *senha );
