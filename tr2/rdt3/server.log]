@@ -1,0 +1,3 @@
+data_rx_seq=0 len=15
+ack_tx_seq=0
+fin_rx_seq=1 ack_enviado=1
