@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard LoRa → Gateway → Servidor (Protótipo)</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;margin:24px}
+h1{margin:0 0 8px 0}
+.card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+table{border-collapse:collapse;width:100%}
+th,td{border-bottom:1px solid #eee;padding:8px;text-align:left;font-size:14px}
+small{color:#666}
+#chart{width:100%;height:240px;border:1px solid #eee;border-radius:8px}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+input,select,button{padding:8px;border:1px solid #ccc;border-radius:8px}
+code{background:#f6f6f6;padding:2px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<h1>Dashboard de Monitoramento (dados simulados)</h1>
+<p class="card">Fonte de dados: POST em <code>/ingest</code>. Consultas: <code>/api/latest</code> e <code>/api/last_n?device_id=&lt;id&gt;&n=100</code>.</p>
+
+<div class="card">
+  <div class="controls">
+    <label>Device ID:</label>
+    <input id="deviceId" placeholder="sensor-001">
+    <button onclick="loadSeries()">Carregar Série</button>
+  </div>
+  <canvas id="chart"></canvas>
+</div>
+
+<div class="card">
+  <h3>Últimas leituras por dispositivo</h3>
+  <div class="controls">
+    <label>Sala:</label>
+    <input id="room" placeholder="vazio = todas">
+    <button onclick="loadLatest()">Atualizar</button>
+  </div>
+  <div id="latest"></div>
+</div>
+
+<script>
+async function loadLatest(){
+  const room = document.getElementById("room").value.trim()
+  const qs = room ? "?room="+encodeURIComponent(room) : ""
+  const r = await fetch("/api/latest"+qs)
+  const data = await r.json()
+  const el = document.getElementById("latest")
+  if(!data.length){ el.innerHTML = "<small>Nenhum dado.</small>"; return }
+  let html = "<div class='grid'>"
+  for(const row of data){
+    html += "<div class='card'><b>"+row.device_id+"</b><br><small>"+row.room+" • "+new Date(row.ts*1000).toLocaleString()+"</small><table>"
+    html += "<tr><th>Temperatura (°C)</th><td>"+(row.temp??"-")+"</td></tr>"
+    html += "<tr><th>Umidade (%)</th><td>"+(row.hum??"-")+"</td></tr>"
+    html += "<tr><th>Poeira (µg/m³)</th><td>"+(row.dust??"-")+"</td></tr>"
+    html += "</table></div>"
+  }
+  html += "</div>"
+  el.innerHTML = html
+}
+
+function drawLine(ctx, points){
+  const w = ctx.canvas.width, h = ctx.canvas.height
+  const xs = points.map(p=>p.x), ys = points.map(p=>p.y)
+  const minX = Math.min(...xs), maxX = Math.max(...xs)
+  const minY = Math.min(...ys), maxY = Math.max(...ys)
+  const toX = v => (v-minX)/(maxX-minX||1)*w
+  const toY = v => h - (v-minY)/(maxY-minY||1)*h
+  ctx.clearRect(0,0,w,h)
+  ctx.beginPath()
+  for(let i=0;i<points.length;i++){
+    const x = toX(points[i].x), y = toY(points[i].y)
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y)
+  }
+  ctx.stroke()
+}
+
+async function loadSeries(){
+  const id = document.getElementById("deviceId").value.trim() || "sensor-001"
+  const r = await fetch("/api/last_n?device_id="+encodeURIComponent(id)+"&n=200")
+  const data = await r.json()
+  const ctx = document.getElementById("chart").getContext("2d")
+  const pts = data.slice().reverse().map(d => ({x:d.ts, y: d.temp??0}))
+  if(!pts.length){
+    ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height)
+    return
+  }
+  drawLine(ctx, pts)
+}
+
+loadLatest()
+setInterval(loadLatest, 5000)
+</script>
+</body>
+</html>
