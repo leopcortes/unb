@@ -22,3 +22,10 @@ simulador
 
 # TR1
 *.d
+
+# Mac
+.DS_Store
+.DS_Store?
+._*
+.AppleDouble
+.LSOverride
